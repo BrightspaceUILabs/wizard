@@ -1,0 +1,40 @@
+{
+  "name": "@brightspace-ui-labs/wizard",
+  "version": "1.0.0",
+  "description": "> Note: this is a [\"labs\" component](https://github.com/BrightspaceUI/guide/wiki/Component-Tiers). While functional, these tasks are prerequisites to promotion to BrightspaceUI \"official\" status:\r >\r > - [ ] [Design organization buy-in](https://github.com/BrightspaceUI/guide/wiki/Before-you-build#working-with-design)\r > - [ ] [design.d2l entry](http://design.d2l/)\r > - [ ] [Architectural sign-off](https://github.com/BrightspaceUI/guide/wiki/Before-you-build#web-component-architecture)\r > - [x] [Continuous integration](https://github.com/BrightspaceUI/guide/wiki/Testing#testing-continuously-with-travis-ci)\r > - [x] [Cross-browser testing](https://github.com/BrightspaceUI/guide/wiki/Testing#cross-browser-testing-with-sauce-labs)\r > - [x] [Unit tests](https://github.com/BrightspaceUI/guide/wiki/Testing#testing-with-polymer-test) (if applicable)\r > - [ ] [Accessibility tests](https://github.com/BrightspaceUI/guide/wiki/Testing#automated-accessibility-testing-with-axe)\r > - [ ] [Visual diff tests](https://github.com/BrightspaceUI/visual-diff)\r > - [ ] [Localization](https://github.com/BrightspaceUI/guide/wiki/Localization) with Serge (if applicable)\r > - [x] Demo page\r > - [x] README documentation",
+  "main": "\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[wizard.js)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrightspaceUILabs/wizard.git"
+  },
+  "author": "D2L Corporation",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/BrightspaceUILabs/wizard/issues"
+  },
+  "homepage": "https://github.com/BrightspaceUILabs/wizard#readme",
+  "dependencies": {
+    "@brightspace-ui/core": "^1",
+    "@polymer/app-route": "^3.0.0",
+    "@polymer/iron-a11y-keys": "^3.0.0",
+    "@polymer/iron-collapse": "^3.0.0",
+    "@polymer/iron-form": "^3.0.0",
+    "@polymer/iron-form-element-behavior": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/iron-location": "^3.0.0",
+    "@polymer/iron-meta": "^3.0.0",
+    "@polymer/iron-pages": "^3.0.0",
+    "@polymer/paper-tabs": "^3.1.0",
+    "@polymer/paper-toggle-button": "^3.0.0",
+    "@polymer/polymer": "^3.2.0",
+    "@polymer/promise-polyfill": "^3.0.0-pre.18",
+    "@polymer/test-fixture": "^4.0.2",
+    "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.4.4"
+  }
+}

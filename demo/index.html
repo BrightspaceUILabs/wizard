@@ -33,7 +33,10 @@
 			<script>
 				document.getElementById('stepper').addEventListener('stepper-next', function (e) {
 					this.next();
-				})
+				});
+				document.getElementById('stepper').addEventListener('stepper-restart', function (e) {
+					this.reset();
+				});
 			</script>
 		</d2l-demo-snippet>
 

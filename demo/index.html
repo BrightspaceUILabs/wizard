@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -13,23 +13,23 @@
 	</script>
 </head>
 <body unresolved>
-	<d2l-demo-page page-title="d2l-wizard">
+	<d2l-demo-page page-title="d2l-labs-wizard">
 
 		<h2>Basic Wizard</h2>
 		<d2l-demo-snippet>
-			<d2l-wizard id="stepper">
-				<d2l-step title="Step 1" hide-restart-button="true">
+			<d2l-labs-wizard id="stepper">
+				<d2l-labs-step title="Step 1" hide-restart-button="true">
 					<p> first step </p>
-				</d2l-step>
+				</d2l-labs-step>
 
-				<d2l-step title="Step 2">
+				<d2l-labs-step title="Step 2">
 					<p> second step </p>
-				</d2l-step>
+				</d2l-labs-step>
 
-				<d2l-step title="Step 3">
+				<d2l-labs-step title="Step 3">
 					<p> Last step </p>
-				</d2l-step>
-			</d2l-wizard>
+				</d2l-labs-step>
+			</d2l-labs-wizard>
 			<script>
 				document.getElementById('stepper').addEventListener('stepper-next', function (e) {
 					this.next();

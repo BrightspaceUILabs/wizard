@@ -163,8 +163,8 @@ class D2LSingleStepHeader extends mixinBehaviors([D2L.PolymerBehaviours.CustomBe
 	}
 
 	_getStepLabel(totalSteps, currentStep) {
-		return this.localize('steplabel', 'totalSteps', totalSteps, 'currentStep', currentStep + 1);
+		return this.localize('aria.steplabel', 'totalSteps', totalSteps, 'currentStep', currentStep + 1);
 	}
 }
 
-customElements.define('d2l-single-step-header', D2LSingleStepHeader);
+customElements.define('d2l-labs-single-step-header', D2LSingleStepHeader);

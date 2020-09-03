@@ -65,4 +65,4 @@ class D2LStep extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.Lan
 	}
 }
 
-customElements.define('d2l-step', D2LStep);
+customElements.define('d2l-labs-step', D2LStep);

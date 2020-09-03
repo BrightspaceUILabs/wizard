@@ -23,11 +23,11 @@ class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.L
 
 		<div class="header">
 			<template is="dom-repeat" items="[[stepTitles]]" restamp>
-				<d2l-single-step-header total-steps="[[stepCount]]" current-step="[[index]]" selected-step="[[selectedStep]]" title="[[item]]"></d2l-single-step-header>
+				<d2l-labs-single-step-header total-steps="[[stepCount]]" current-step="[[index]]" selected-step="[[selectedStep]]" title="[[item]]"></d2l-labs-single-step-header>
 			</template>
 		</div>
 
-		<iron-pages id="wizardPages" selected="[[selectedStep]]" selectable="d2l-step" on-iron-items-changed="_updateSteps" >
+		<iron-pages id="wizardPages" selected="[[selectedStep]]" selectable="d2l-labs-step" on-iron-items-changed="_updateSteps" >
 			<slot></slot>
 		</iron-pages>
 `;
@@ -80,4 +80,4 @@ class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.L
 	}
 }
 
-customElements.define('d2l-wizard', D2LWizard);
+customElements.define('d2l-labs-wizard', D2LWizard);

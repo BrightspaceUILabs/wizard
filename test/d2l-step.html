@@ -41,22 +41,22 @@
 
 			});
 
-			describe('event', function () {
+			describe('event', function() {
 
-				beforeEach(function () {
+				beforeEach(function() {
 					elem = fixture('basic');
 				});
 
-				it('should create stepper-next event', function (done) {
-					elem.addEventListener('stepper-next', function (event) {
+				it('should create stepper-next event', function(done) {
+					elem.addEventListener('stepper-next', function(event) {
 						assert.equal(event.type, 'stepper-next');
 						done();
 					});
 					elem._nextClick();
 				});
 
-				it('should create stepper-restart event', function (done) {
-					elem.addEventListener('stepper-restart', function (event) {
+				it('should create stepper-restart event', function(done) {
+					elem.addEventListener('stepper-restart', function(event) {
 						assert.equal(event.type, 'stepper-restart');
 						done();
 					});

@@ -14,6 +14,13 @@
     "type": "git",
     "url": "git+https://github.com/BrightspaceUILabs/wizard.git"
   },
+  "files": [
+    "d2l-wizard.js",
+    "d2l-step.js",
+    "d2l-single-step-header.js",
+    "language-behaviour.js",
+    "/lang"
+  ],
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "bugs": {

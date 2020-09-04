@@ -7,6 +7,22 @@ import './d2l-single-step-header.js';
 import './d2l-step.js';
 
 class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.LanguageBehaviour], PolymerElement) {
+	static get properties() {
+		return {
+			stepTitles: {
+				type: Array,
+				value: function() { return []; }
+			},
+			stepCount: {
+				type: Number,
+				value: 0
+			},
+			selectedStep: {
+				type: Number,
+				value: 0
+			}
+		};
+	}
 	static get template() {
 		return html`
 		<style>
@@ -33,27 +49,6 @@ class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.L
 `;
 	}
 
-	static get properties() {
-		return {
-			stepTitles: {
-				type: Array,
-				value: function () { return []; }
-			},
-			stepCount: {
-				type: Number,
-				value: 0
-			},
-			selectedStep: {
-				type: Number,
-				value: 0
-			}
-		};
-	}
-
-	reset() {
-		this.selectedStep = 0;
-	}
-
 	next() {
 		var pages = this.$.wizardPages;
 		pages.selectNext();
@@ -62,6 +57,9 @@ class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.L
 		}
 
 		this.selectedStep = pages.selected;
+	}
+	reset() {
+		this.selectedStep = 0;
 	}
 
 	_getSteps() {
@@ -72,7 +70,7 @@ class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.L
 		var steps = this._getSteps();
 
 		this.stepTitles = [];
-		steps.forEach(function (step) {
+		steps.forEach(function(step) {
 			this.push('stepTitles', step.title);
 		}.bind(this));
 

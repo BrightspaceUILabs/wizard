@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>d2l-single-step-header tests</title>
+	<script src="/node_modules/@babel/polyfill/browser.js"></script>
+	<script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+	<script src="/node_modules/wct-browser-legacy/browser.js"></script>
+	<script type="module" src="../d2l-single-step-header.js"></script>
+</head>
+<body>
+	<test-fixture id="basic">
+		<template>
+			<d2l-labs-single-step-header></d2l-labs-single-step-header>
+		</template>
+	</test-fixture>
+	<script type="module">
+		import '../d2l-single-step-header.js';
+		describe('d2l-single-step-header', function() {
+
+			var elem, htmlElem;
+
+			beforeEach(function() {
+				htmlElem = window.document.getElementsByTagName('html')[0];
+				htmlElem.removeAttribute('lang');
+			});
+
+			describe('basic', function() {
+
+				beforeEach(function() {
+					elem = fixture('basic');
+				});
+
+				it('should instantiate the element', function() {
+					expect(elem.localName).to.equal('d2l-labs-single-step-header');
+				});
+
+				it('should default "language" to "en"', function() {
+					expect(elem.language).to.equal('en');
+				});
+
+			});
+
+		});
+	</script>
+</body>
+</html>

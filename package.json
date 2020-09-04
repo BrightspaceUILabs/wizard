@@ -1,10 +1,14 @@
 {
   "name": "@brightspace-ui-labs/wizard",
   "version": "1.0.0",
-  "description": "> Note: this is a [\"labs\" component](https://github.com/BrightspaceUI/guide/wiki/Component-Tiers). While functional, these tasks are prerequisites to promotion to BrightspaceUI \"official\" status:\r >\r > - [ ] [Design organization buy-in](https://github.com/BrightspaceUI/guide/wiki/Before-you-build#working-with-design)\r > - [ ] [design.d2l entry](http://design.d2l/)\r > - [ ] [Architectural sign-off](https://github.com/BrightspaceUI/guide/wiki/Before-you-build#web-component-architecture)\r > - [x] [Continuous integration](https://github.com/BrightspaceUI/guide/wiki/Testing#testing-continuously-with-travis-ci)\r > - [x] [Cross-browser testing](https://github.com/BrightspaceUI/guide/wiki/Testing#cross-browser-testing-with-sauce-labs)\r > - [x] [Unit tests](https://github.com/BrightspaceUI/guide/wiki/Testing#testing-with-polymer-test) (if applicable)\r > - [ ] [Accessibility tests](https://github.com/BrightspaceUI/guide/wiki/Testing#automated-accessibility-testing-with-axe)\r > - [ ] [Visual diff tests](https://github.com/BrightspaceUI/visual-diff)\r > - [ ] [Localization](https://github.com/BrightspaceUI/guide/wiki/Localization) with Serge (if applicable)\r > - [x] Demo page\r > - [x] README documentation",
-  "main": "\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[wizard.js)",
+  "description": "Polymer based web-component for wizard",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npm run lint:wc && npm run lint:js",
+    "lint:js": "eslint . --ext .js,.html test/**/*.html demo/**/*.html",
+    "lint:wc": "polymer lint d2l-file-uploader.js",
+    "test": "npm run lint && npm run test:polymer:local",
+    "test:polymer:local": "polymer test --skip-plugin sauce ",
+    "test:polymer:sauce": "polymer test --skip-plugin local"
   },
   "repository": {
     "type": "git",
@@ -35,6 +39,16 @@
     "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.4.4"
+    "@babel/polyfill": "^7",
+    "@webcomponents/webcomponentsjs": "^2",
+    "babel-eslint": "^10",
+    "d2l-polymer-behaviors": "Brightspace/d2l-polymer-behaviors-ui#semver:^2",
+    "eslint": "^7",
+    "eslint-config-brightspace": "^0.10",
+    "eslint-plugin-html": "^6",
+    "eslint-plugin-sort-class-members": "^1",
+    "frau-ci": "^1",
+    "polymer-cli": "^1",
+    "wct-browser-legacy": "^1"
   }
 }

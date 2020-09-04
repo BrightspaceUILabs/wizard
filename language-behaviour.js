@@ -21,7 +21,7 @@ import zhtw from './lang/zh-tw.js';
 function getTranslations(localization) {
 	var translations = {};
 	for (const [key, value] of Object.entries(localization)) {
-		translations[key] = value["translation"];
+		translations[key] = value['translation'];
 	}
 	return translations;
 }
@@ -30,7 +30,7 @@ function getTranslations(localization) {
 var NewLanguageBehaviour = {
 	properties: {
 		resources: {
-			value: function () {
+			value: function() {
 				return {
 					'en': getTranslations(en),
 					'ar': getTranslations(ar),

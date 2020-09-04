@@ -5,6 +5,20 @@ import '@brightspace-ui/core/components/button/button.js';
 import './language-behaviour.js';
 
 class D2LStep extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.LanguageBehaviour], PolymerElement) {
+	static get properties() {
+		return {
+			nextButtonTitle: String,
+			restartButtonTitle: String,
+			hideRestartButton: {
+				type: Boolean,
+				value: false
+			},
+			disableNextButton: {
+				type: Boolean,
+				value: false
+			}
+		};
+	}
 	static get template() {
 		return html`
 		<style>
@@ -31,21 +45,6 @@ class D2LStep extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.Lan
 `;
 	}
 
-	static get properties() {
-		return {
-			nextButtonTitle: String,
-			restartButtonTitle: String,
-			hideRestartButton: {
-				type: Boolean,
-				value: false
-			},
-			disableNextButton: {
-				type: Boolean,
-				value: false
-			}
-		};
-	}
-
 	ready() {
 		super.ready();
 		if (!this.nextButtonTitle) {
@@ -56,13 +55,13 @@ class D2LStep extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.Lan
 		}
 	}
 
+	_nextClick() {
+		this.dispatchEvent(new CustomEvent('stepper-next', { bubbles: true, composed: true }));
+	}
 	_restartClick() {
 		this.dispatchEvent(new CustomEvent('stepper-restart', { bubbles: true, composed: true }));
 	}
 
-	_nextClick() {
-		this.dispatchEvent(new CustomEvent('stepper-next', { bubbles: true, composed: true }));
-	}
 }
 
 customElements.define('d2l-labs-step', D2LStep);

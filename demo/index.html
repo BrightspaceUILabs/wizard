@@ -17,7 +17,7 @@
 
 		<h2>Basic Wizard</h2>
 		<d2l-demo-snippet>
-			<d2l-labs-wizard id="stepper">
+			<d2l-labs-wizard id="stepper" selected-step="1">
 				<d2l-labs-step title="Step 1" hide-restart-button="true">
 					<p> first step </p>
 				</d2l-labs-step>
@@ -31,11 +31,12 @@
 				</d2l-labs-step>
 			</d2l-labs-wizard>
 			<script>
-				document.getElementById('stepper').addEventListener('stepper-next', function (e) {
-					this.next();
+				var stepper = document.getElementById('stepper');
+				stepper.addEventListener('stepper-next', function() {
+					stepper.next();
 				});
-				document.getElementById('stepper').addEventListener('stepper-restart', function (e) {
-					this.reset();
+				stepper.addEventListener('stepper-restart', function() {
+					stepper.reset();
 				});
 			</script>
 		</d2l-demo-snippet>

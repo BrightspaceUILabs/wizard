@@ -5,6 +5,23 @@ import '@brightspace-ui/core/components/icons/icon.js';
 import './language-behaviour.js';
 
 class D2LSingleStepHeader extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.LanguageBehaviour], PolymerElement) {
+	static get properties() {
+		return {
+			title: String,
+			totalSteps: {
+				type: Number,
+				value: 0
+			},
+			currentStep: {
+				type: Number,
+				value: 0
+			},
+			selectedStep: {
+				type: Number,
+				value: 0
+			}
+		};
+	}
 	static get template() {
 		return html`
 		<style include="shared-styles">
@@ -114,32 +131,16 @@ class D2LSingleStepHeader extends mixinBehaviors([D2L.PolymerBehaviours.CustomBe
 `;
 	}
 
-	static get properties() {
-		return {
-			title: String,
-			totalSteps: {
-				type: Number,
-				value: 0
-			},
-			currentStep: {
-				type: Number,
-				value: 0
-			},
-			selectedStep: {
-				type: Number,
-				value: 0
-			}
-		};
+	_getIsFirst(currentStep) {
+		if (currentStep === 0) {
+			return 'first';
+		}
 	}
-
-	_isDone(selectedStep, currentStep) {
-		return currentStep < selectedStep;
+	_getIsLast(totalSteps, currentStep) {
+		if (totalSteps === currentStep + 1) {
+			return 'last';
+		}
 	}
-
-	_isInProgress(selectedStep, currentStep) {
-		return currentStep === selectedStep;
-	}
-
 	_getProgressStatus(selectedStep, currentStep) {
 		var className = 'not-started';
 		if (this._isDone(selectedStep, currentStep)) {
@@ -149,22 +150,17 @@ class D2LSingleStepHeader extends mixinBehaviors([D2L.PolymerBehaviours.CustomBe
 		}
 		return className;
 	}
-
-	_getIsFirst(currentStep) {
-		if (currentStep === 0) {
-			return 'first';
-		}
-	}
-
-	_getIsLast(totalSteps, currentStep) {
-		if (totalSteps === currentStep + 1) {
-			return 'last';
-		}
-	}
-
 	_getStepLabel(totalSteps, currentStep) {
 		return this.localize('aria.steplabel', 'totalSteps', totalSteps, 'currentStep', currentStep + 1);
 	}
+	_isDone(selectedStep, currentStep) {
+		return currentStep < selectedStep;
+	}
+
+	_isInProgress(selectedStep, currentStep) {
+		return currentStep === selectedStep;
+	}
+
 }
 
 customElements.define('d2l-labs-single-step-header', D2LSingleStepHeader);

@@ -1,7 +1,7 @@
 export default {
 	'aria.steplabel': {
 		'context': 'Aria label for wizard steps',
-		'translation': '�tape {currentStep} de {totalSteps}'
+		'translation': 'Étape {currentStep} de {totalSteps}'
 	},
 	'stepper.defaults.next': {
 		'context': 'Button title for advancing to the next step',
@@ -9,6 +9,6 @@ export default {
 	},
 	'stepper.defaults.restart': {
 		'context': 'Button title for restarting from the beginning of the steps',
-		'translation': 'Red�marrer'
+		'translation': 'Redémarrer'
 	}
 };

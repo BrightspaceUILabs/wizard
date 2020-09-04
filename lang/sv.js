@@ -5,7 +5,7 @@ export default {
 	},
 	'stepper.defaults.next': {
 		'context': 'Button title for advancing to the next step',
-		'translation': 'N�sta'
+		'translation': 'Nästa'
 	},
 	'stepper.defaults.restart': {
 		'context': 'Button title for restarting from the beginning of the steps',

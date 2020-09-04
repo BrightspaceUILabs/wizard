@@ -58,7 +58,8 @@ class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.L
 
 		this.selectedStep = pages.selected;
 	}
-	reset() {
+
+	restart() {
 		this.selectedStep = 0;
 	}
 

@@ -24,7 +24,59 @@ For further information on this and other components, refer to [The Brightspace 
 
 ## Installation
 
+To install from NPM:
+
+```shell
+npm install @brightspace-ui-labs/wizard
+```
+
 ## Usage
+
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) polyfill loader (for browsers who don't natively support web components), then include `d2l-file-uploader.js`:
+
+```html
+<head>
+  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module" src="node_modules/@brightspace-ui-labs/wizard/d2l-wizard.js"></script>
+  <script type="module" src="node_modules/@brightspace-ui-labs/wizard/d2l-step.js"></script>
+  <script type="module" src="node_modules/@brightspace-ui-labs/wizard/d2l-single-step-header.js"></script>
+</head>
+```
+
+### Basic Usage
+
+Add the component to your page
+
+```html
+<d2l-labs-wizard id="wizard" on-stepper-restart="restart">
+	<d2l-labs-step title="Step 1" on-stepper-next="next">
+		<p> First step </p>
+	</d2l-labs-step>
+
+	<d2l-labs-step title="Step 2" on-stepper-next="save">
+		<p> Second step </p>
+	</d2l-labs-step>
+</d2l-labs-wizard>
+```
+
+In the component using this, make sure you call `next` on the wizard when
+
+```js
+restart() {
+	this.$.wizard.restart();
+}
+
+next() {
+	// your validation
+	this.$.wizard.next();
+}
+
+save() {
+	// validate and save
+}
+```
+
+
 
 ## Developing, Testing and Contributing
 

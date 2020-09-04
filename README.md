@@ -59,7 +59,7 @@ Add the component to your page
 </d2l-labs-wizard>
 ```
 
-In the component using this, make sure you call `next` on the wizard when
+In the component using this, make sure you call `next` on the wizard.
 
 ```js
 restart() {

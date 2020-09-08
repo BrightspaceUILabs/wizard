@@ -32,7 +32,7 @@ npm install @brightspace-ui-labs/wizard
 
 ## Usage
 
-Include the [webcomponents.js](http://webcomponents.org/polyfills/) polyfill loader (for browsers who don't natively support web components), then include `d2l-file-uploader.js`:
+Include the [webcomponents.js](http://webcomponents.org/polyfills/) polyfill loader (for browsers who don't natively support web components), then include necessary components:
 
 ```html
 <head>

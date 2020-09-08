@@ -17,7 +17,7 @@
 > - [x] Demo page
 > - [ ] README documentation
 
-[Polymer](https://www.polymer-project.org) component for uploading files with drag and drop capability. This component does not perform the actual uploading work, it simply provides visual cues and exposes an event when files have been uploaded.
+[Polymer](https://www.polymer-project.org) component for going through a setup in a multi step process.
 
 
 For further information on this and other components, refer to [The Brightspace UI Guide](https://github.com/BrightspaceUI/guide/wiki).

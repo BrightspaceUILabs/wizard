@@ -13,7 +13,7 @@ on:
 jobs:
   sync-labels:
     name: sync-labels
-    runs-on: [self-hosted, Linux, AWS]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: Brightspace/third-party-actions@actions/checkout

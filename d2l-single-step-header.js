@@ -66,7 +66,6 @@ class D2LSingleStepHeader extends mixinBehaviors([D2L.PolymerBehaviours.CustomBe
 			}
 
 			.done-icon {
-				margin-top: 2px;
 				color: var(--d2l-color-olivine);
 				height: 20px;
 				width: 20px;

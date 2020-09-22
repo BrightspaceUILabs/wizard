@@ -32,62 +32,62 @@
 
 	<script type="module">
 		import '../d2l-single-step-header.js';
-		describe('d2l-single-step-header', function () {
+		describe('d2l-single-step-header', function() {
 
 			var elem, htmlElem;
 
-			beforeEach(function () {
+			beforeEach(function() {
 				htmlElem = window.document.getElementsByTagName('html')[0];
 				htmlElem.removeAttribute('lang');
 			});
 
-			describe('basic', function () {
+			describe('basic', function() {
 
-				beforeEach(function () {
+				beforeEach(function() {
 					elem = fixture('basic');
 				});
 
-				it('should instantiate the element', function () {
+				it('should instantiate the element', function() {
 					expect(elem.localName).to.equal('d2l-labs-single-step-header');
 				});
 
-				it('should default "language" to "en"', function () {
+				it('should default "language" to "en"', function() {
 					expect(elem.language).to.equal('en');
 				});
 
 			});
 
-			describe('first', function () {
+			describe('first', function() {
 
-				beforeEach(function () {
+				beforeEach(function() {
 					elem = fixture('first');
 				});
 
-				it('should have class name first', function () {
+				it('should have class name first', function() {
 					expect(elem.root.children[1].className).to.equal('first ');
 				});
 
 			});
 
-			describe('last', function () {
+			describe('last', function() {
 
-				beforeEach(function () {
+				beforeEach(function() {
 					elem = fixture('last');
 				});
 
-				it('should have class name last', function () {
+				it('should have class name last', function() {
 					expect(elem.root.children[1].className).to.equal(' last');
 				});
 
 			});
 
-			describe('first and last', function () {
+			describe('first and last', function() {
 
-				beforeEach(function () {
+				beforeEach(function() {
 					elem = fixture('first-last');
 				});
 
-				it('should have class name first and last', function () {
+				it('should have class name first and last', function() {
 					expect(elem.root.children[1].className).to.equal('first last');
 				});
 

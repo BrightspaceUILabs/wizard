@@ -16,7 +16,7 @@ import pt from './lang/pt.js';
 import sv from './lang/sv.js';
 import tr from './lang/tr.js';
 import zh from './lang/zh.js';
-import zhtw from './lang/zh-tw.js';
+import zhtw from './lang/zh-TW.js';
 
 function getTranslations(localization) {
 	var translations = {};

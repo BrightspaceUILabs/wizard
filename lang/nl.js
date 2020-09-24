@@ -1,14 +1,14 @@
 export default {
 	'aria.steplabel': {
-		'context': 'Aria label for wizard steps',
-		'translation': 'Stap {currentStep} van {totalSteps}'
+		'translation': 'Stap {currentStep} van {totalSteps}',
+		'context': 'Aria label for wizard steps'
 	},
 	'stepper.defaults.next': {
-		'context': 'Button title for advancing to the next step',
-		'translation': 'Volgende'
+		'translation': 'Volgende',
+		'context': 'Button title for advancing to the next step'
 	},
 	'stepper.defaults.restart': {
-		'context': 'Button title for restarting from the beginning of the steps',
-		'translation': 'Opnieuw starten'
+		'translation': 'Opnieuw starten',
+		'context': 'Knoptitel voor het opnieuw opstarten vanaf het begin van de stappen'
 	}
 };

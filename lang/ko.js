@@ -1,14 +1,14 @@
-﻿export default {
+export default {
 	'aria.steplabel': {
-		'context': 'Aria label for wizard steps',
-		'translation': '{currentStep}/{totalSteps} 단계'
+		'translation': '{currentStep}/{totalSteps} 단계',
+		'context': 'Aria label for wizard steps'
 	},
 	'stepper.defaults.next': {
-		'context': 'Button title for advancing to the next step',
-		'translation': '다음'
+		'translation': '다음',
+		'context': 'Button title for advancing to the next step'
 	},
 	'stepper.defaults.restart': {
-		'context': 'Button title for restarting from the beginning of the steps',
-		'translation': '다시 시작'
+		'translation': '다시 시작',
+		'context': '단계의 시작 부분에서 다시 시작하는 버튼 제목'
 	}
 };

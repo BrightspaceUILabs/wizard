@@ -1,6 +1,6 @@
 {
   "name": "@brightspace-ui-labs/wizard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Polymer based web-component for wizard",
   "scripts": {
     "lint": "npm run lint:wc && npm run lint:js",

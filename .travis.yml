@@ -1,0 +1,42 @@
+language: node_js
+node_js: node
+jobs:
+  include:
+  - stage: Unit tests
+    script:
+    - npm run lint
+    - |
+      if [ $TRAVIS_PULL_REQUEST != false ] && [ $TRAVIS_SECURE_ENV_VARS == true ]; then
+          echo "Pull request with secure environment variables, running Sauce tests...";
+          npm run test:sauce || travis_terminate 1;
+      else
+          echo "Not a pull request and/or no secure environment variables, running headless tests...";
+          npm run test:headless || travis_terminate 1;
+      fi
+    env:
+    - SAUCE_USERNAME: Desire2Learn
+    # SAUCE_ACCESS_KEY
+    - secure: hLAenbNWrxncBSRj2bo95+aHi5ubCdBM7bHPfDXL5bK4+9oZgrnXYMFyE9tyEUJQxubQpn3wQHzzidQHY4LxiLdeSeSU2HTpQNRwCGnGKSHtDee0+gAODq3kVUOL1P06D+G73XzEzZleTNHvwg9TkzO/2jzpkKALZYf2OY0a+asjaAHLHdh6WsgVxPKzJ1+tvYTQhrIu7rhbKtM67SE2Ma1957a2G74QhQJdC2pUZXO38i263+SdX5o64VfZAa6nyhjAkglhkNtUEhvZogh4P8QMSSYKrT5LKSbe+EXcjSEGPG3AlWPhgxCpMed+6978hXIQFQFC4uKtfPdEI2FpXguAB6IgSaKMfQYzD1oPB48G5ddpB7BaeEnlxL0laPwHrsLpfVOrxpIxq+cLCPKWV77I6C/GiPOlTSF9sAZa8MXFQqtlu7TWmmKCIgRs7mGL2I4uHqEUnj9GqJV7LLO3MrSMj+TTl5E33BwQKvTU/PP79eU7eOqHQIDdHaLi9jul6V0WRY1hlNkJgBTePwX+GRDEGQuowdPzzsftn+SWuB0lkoHY7JQBYJ04X4XHYYSSj7dNgQqY/D/GjrgqNX3MCgnLHsBfnSNL55wNHUgdHqLSB1AvWIAv2ZAioKzEz1dYcjhEPoOnjsERjQq/Ukvvc2Udu8o7I45u5+qcB1gqvxw=
+  - stage: Visual-difference-tests
+    script:
+    - if [ $TRAVIS_SECURE_ENV_VARS == true ]; then echo "Running visual difference
+      tests..."; npm run test:diff || travis_terminate 1; fi
+    env:
+    # VISUAL_DIFF_S3_ID
+    - secure: EhU9v4Nzv/LzFR1YFHhObGRg1rrW7lszmoQ+Vnn6Nba+OM/gd0KpV0nWH1dzkW4BfXS1R7mamBqJuHdw2icthDey8tfoLLX462M6033qPDHcS6YhjMdZHaFGz8T3Cv1p9UM4hOuG+4JTmiBC6YTGEPgB61/JtUthnr0BsPtcVGQ0UErUOYRSrhgxSDyXGOzmeGK8CdR/GaleT+BQEZ3EJfSbv8G9QOtid8obzYxtYIbTa/OkCnXVK7RQxRQl6CKlnjpv78wNPFepqQNTh4/oDt7Bs4cg5Lxrj1Ants27wjxEeJdsD2yBMPWpdJAvtn8Vv/LReZ6//iFwGNjB89JymGA8FzppQHCqfUy/8t4I+VbffL2+OrKqoe+uxh6yha2K33EWB1PSgLVe1nfLndELzGm3B+cPc2a8fHsFzijxsRrcmDvqw1sbROp2ViJiBKByMMTeuhiTBwKtNvdhrDbA91C9TQOp9lZLesYIPz3xwb9ewDTBSyZB5xStm6hqgCB9UovLkggr3v7G7HJY+Kd9u0lvcBPwRBl1Y3CEeeDIbN+7CWLDtPqSd0Iv4OR/lpV+8+zx3wlxmPk6q0JKpvA0cUaghFNONV3oXkqUgOwf3c+iw524QKkNKrV906kEwzWqkRfrNNR6elAsCXPvRka3jMrK5qUXC29LVyUU+BFzM+o=
+    # VISUAL_DIFF_S3_SECRET
+    - secure: FC9QKdmZkbJm++/BmdMfbEA9H7iv75sz0/BdyGdgbOIyAMLmgDjlEz7geGvM638Dwa+hLVQEus1XiEq7jmvD2Pov00y81yQOOd8dcrsHyyPNyZS8k8Fp6ohuXM/krz8dUrEszX7NAzFvukUDEqF8RFRauDSW1oJLnFoM7nU0NH2l4GrrLbEWcAWTZtw/pXafA7EDjM72Q8xjubz/L80f9fy7+QN+UJg7k3Liqy07fthtJFP1o/bncl33N9QqEj4ylSKlwVfkLAD4Qm4mYbbFRTD9UM00e32Hj4JkPjjDPxWJ/Absr8g/tmEdeROmNEvxjeX9VNMqlmjD8usnwTM+S59k0Zal2BtlSPcQosaYfC17fTl5MVDdKqVXAKQcREVs3O+bfwNocsF9a4H43CRS48SEFHDbbBTuyMXdFcOF707NRzrqCwOMnJB8acZeFZALXS1ADP4ozAG+ekm3hqBFYDOZ2t6zz1bWJXIr1+P5IO5cjDT2DLeLlV4aPFja5JlW9lHt1MRiBQCqrPhbGpOyd94sqN9A5CuoZ0J84woL0GHx30TVs8n2NxK+Onsj1RYqPLy34iPKVwwARmu/13IwM40A/7k8+Qu6uABrcdQbKHnwhMim9oyuztLzGNkoyMspsxFS8W80XDUplL+O1jSRwHz1qE2c2d5rGseZ5gWbXQY=
+  - stage: release
+    script: skip
+    env:
+     # NPM_TOKEN 6cc1.....f9da
+    - secure: WNwKvgSwJOfFKGv+HUelaQSEspQEzJjYA0y5G3IYk/3lqee/jCy3DIXkich/CmtgLjk0k2h/hwt2Lzl4UHB4XVJxv55JOVesCSeUkUpSpUInXW4vPTh0zmxKvfo3brnPZkDT+XTK7GEw80+zhc72If/CAnD/uOVWZfE1ikWXcFCzGdtxjmW7DJpgI64vPhYmib918D4ulcoyEwANrHOhVzNGI6i2NYGgK0XSME+2zwuDiryPMN7QTKoKq2js5WHiQmjdGQR0P2AEFd4GXivtp1aUleHwsNfm2kia2ma0w/sbXaz6WCdv6kTA0xDE4NEEQO+2kHU/agML/UOGBFGjPg2xeB98z42+KEXD5NHhWD3WsiABrqrXJiz5YUYTUd2bIfMTBF9FwH4ezVl8pNm6hqoKCbzQazZDMsEHd3UTDniHxuhPtnyeBUwZ1z2IXN5ABR7Ml58JzpX33AmT7mEa09fmis5+xGgoYBL/MWJQpYvvfCqII0t2dH7MoBahbjQigphPS0UobXYqDp7vuApvdl6a80CBnhKAVbCpWJGO0cyZBuVIJEloNWE36ogB0yQdM2hr/42CourJmBN2OCGlVEj+7AksHFba4qZ0yZFTm6jrrDVymr02IJGZNfIX0DtR86ehxDGmc1Gp/DNwC7FYcbvuyB0kghntD1U1mL+Pdk0=
+    deploy:
+      provider: script
+      skip_cleanup: true
+      script:
+      - npx semantic-release
+env:
+  global:
+  # GITHUB_TOKEN
+  - secure: uhVpIXgG0wwWcN5e5CtXv7ydtzzt3WbjUOHcHgWE94vurQI0ol7elDlXar8TbOi6siR7YwS8IELmekGxB0GRTYIJ6NrjNJgR9LXWCj3E4U0meUtRWgzvyfFca4AXEtqlgTXe1taBq2gtdq8aBo6XdfsUBjrSAMHHSPTEquW1kJVxQ7Kdpe9a3oMamqBMBIzLwdgLsZX31t/7fTqovZhE27Y7SXZK1Lkjj645m931h1LgjY0xo5ygMNdGvl3uHcMmHwGJ+rIndmybOw4m99IW0EhcJrP82Bt9StTJ/vdwjxgT1Zh5rkNK/r6qsAJDrEH8seOMvCRSjAW9CeiMWpQbiE3yZT26Uj7yPvxCBnxH/GTNZkepRdNdAvTXVDnXfpvlWCO3Hw0bJ2PlXUnzfFvW3Pzz/dB5xjbdzSaUvLvzaCTTcxooMNvCCRO7btlHX5ghhluyt3bOScZv+PdRKpCu1J+hpAU1jMp7wIyGw5ENfv25pBvSLmPBLiisGsGSBfiPJwkHaSIeq7KfV5BEnwKFl0ddqW7kjxwy32TH7/iBWR0qkObq6PfiIBFqaXbNZyLclM9fgIKSOjbU9Vg67D3Kw50x2btDiVEGc6OKV/1vjV+zJoxlHCgkVeWmTyijZ5z2GlADSwMar5MUEI5TZ1S2LhgKKOYCt1oAHZqc3MucoxU=

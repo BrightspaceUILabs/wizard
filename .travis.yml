@@ -33,7 +33,6 @@ jobs:
     - secure: WNwKvgSwJOfFKGv+HUelaQSEspQEzJjYA0y5G3IYk/3lqee/jCy3DIXkich/CmtgLjk0k2h/hwt2Lzl4UHB4XVJxv55JOVesCSeUkUpSpUInXW4vPTh0zmxKvfo3brnPZkDT+XTK7GEw80+zhc72If/CAnD/uOVWZfE1ikWXcFCzGdtxjmW7DJpgI64vPhYmib918D4ulcoyEwANrHOhVzNGI6i2NYGgK0XSME+2zwuDiryPMN7QTKoKq2js5WHiQmjdGQR0P2AEFd4GXivtp1aUleHwsNfm2kia2ma0w/sbXaz6WCdv6kTA0xDE4NEEQO+2kHU/agML/UOGBFGjPg2xeB98z42+KEXD5NHhWD3WsiABrqrXJiz5YUYTUd2bIfMTBF9FwH4ezVl8pNm6hqoKCbzQazZDMsEHd3UTDniHxuhPtnyeBUwZ1z2IXN5ABR7Ml58JzpX33AmT7mEa09fmis5+xGgoYBL/MWJQpYvvfCqII0t2dH7MoBahbjQigphPS0UobXYqDp7vuApvdl6a80CBnhKAVbCpWJGO0cyZBuVIJEloNWE36ogB0yQdM2hr/42CourJmBN2OCGlVEj+7AksHFba4qZ0yZFTm6jrrDVymr02IJGZNfIX0DtR86ehxDGmc1Gp/DNwC7FYcbvuyB0kghntD1U1mL+Pdk0=
     deploy:
       provider: script
-      skip_cleanup: true
       script:
       - npx semantic-release
 env:

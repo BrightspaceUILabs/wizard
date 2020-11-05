@@ -4,8 +4,8 @@ on:
     branches:
       - master
     paths:
-      - .github/workflows/sync-labels.yml
-      - .github/labels.yml
+      - sync-labels.yml
+      - labels.yml
 jobs:
   sync-labels:
     name: sync-labels
@@ -18,4 +18,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          manifest: .github/labels.yml
+          manifest: labels.yml

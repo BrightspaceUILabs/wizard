@@ -10,39 +10,11 @@
 		import '../d2l-wizard.js';
 		import '../d2l-step.js';
 		import '../d2l-single-step-header.js';
-		import '../d2l-wizard-lit.js';
 	</script>
 </head>
 
 <body unresolved>
 	<d2l-demo-page page-title="d2l-labs-wizard">
-
-		<h2>Lit Wizard</h2>
-		<d2l-demo-snippet>
-			<d2l-labs-wizard-lit id="wizard-lit" selected-step="1">
-				<d2l-labs-step title="Step 1" hide-restart-button="true">
-					<p> first step </p>
-				</d2l-labs-step>
-
-				<d2l-labs-step title="Step 2">
-					<p> second step </p>
-				</d2l-labs-step>
-
-				<d2l-labs-step title="Step 3" next-button-title="Done">
-					<p> Last step </p>
-				</d2l-labs-step>
-			</d2l-labs-wizard-lit>
-			<script>
-				var wizardLit = document.getElementById('wizard-lit');
-				wizardLit.addEventListener('stepper-next', function() {
-					wizardLit.next();
-				});
-				wizardLit.addEventListener('stepper-restart', function() {
-					wizardLit.restart();
-				});
-			</script>
-		</d2l-demo-snippet>
-
 		<h2>Basic Wizard</h2>
 		<d2l-demo-snippet>
 			<d2l-labs-wizard id="wizard" selected-step="1">

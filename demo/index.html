@@ -31,11 +31,11 @@
 				</d2l-labs-step>
 			</d2l-labs-wizard>
 			<script>
-				var wizard = document.getElementById('wizard');
-				wizard.addEventListener('stepper-next', function() {
+				const wizard = document.getElementById('wizard');
+				wizard.addEventListener('stepper-next', () => {
 					wizard.next();
 				});
-				wizard.addEventListener('stepper-restart', function() {
+				wizard.addEventListener('stepper-restart', () => {
 					wizard.restart();
 				});
 			</script>

@@ -88,4 +88,4 @@ class D2LWizard extends LitElement {
 
 }
 
-customElements.define('d2l-labs-wizard', D2LWizard);
+customElements.define('d2l-labs-wizard-lit', D2LWizard);

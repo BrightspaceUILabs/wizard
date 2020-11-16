@@ -73,7 +73,7 @@ class D2LWizard extends LitElement {
 	}
 
 	_updateStep() {
-		var steps = this.shadowRoot.querySelector('slot').assignedElements();
+		const steps = this.shadowRoot.querySelector('slot').assignedNodes({ flatten: true }).filter((node) => node.nodeType === Node.ELEMENT_NODE);
 		this.stepCount = steps.length;
 
 		this.stepTitles = [];

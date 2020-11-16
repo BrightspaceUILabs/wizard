@@ -40,7 +40,7 @@ class D2LWizard extends LitElement {
 	}
 
 	next() {
-		this.selectedStep = (this.selectedStep + 1) % this.stepCount;
+		this.selectedStep = (this.selectedStep + 1) === this.stepCount ? this.selectedStep : (this.selectedStep + 1);
 
 		this._updateStep();
 

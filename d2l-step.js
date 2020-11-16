@@ -34,7 +34,7 @@ class D2LStep extends LocalizeMixin(LitElement) {
 			}
 
 			.button-next {
-				margin-left: auto;
+				float: right;
 			}
 		`;
 	}
@@ -53,7 +53,7 @@ class D2LStep extends LocalizeMixin(LitElement) {
 		return html`
 			<slot></slot>
 			<div class="footer">
-				${this.hideRestartButton ? html`` : html`<d2l-button @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
+				${this.hideRestartButton ? html`<div/>` : html`<d2l-button @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
 
 				<d2l-button class="button-next" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
 			</div>

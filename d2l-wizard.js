@@ -39,6 +39,16 @@ class D2LWizard extends LitElement {
 		this.selectedStep = 0;
 	}
 
+	next() {
+		this.selectedStep = (this.selectedStep + 1) === this.stepCount ? this.selectedStep : (this.selectedStep + 1);
+
+		this._updateStep();
+
+		if (window.parentIFrame) {
+			window.parentIFrame.scrollTo(0, 0);
+		}
+	}
+
 	render() {
 		return html`
 			<div class="header">
@@ -50,15 +60,6 @@ class D2LWizard extends LitElement {
 			</div>
 			<slot @slotchange="${this._handleSlotChange}"></slot>
 		`;
-	}
-	next() {
-		this.selectedStep = (this.selectedStep + 1) % this.stepCount;
-
-		this._updateStep();
-
-		if (window.parentIFrame) {
-			window.parentIFrame.scrollTo(0, 0);
-		}
 	}
 
 	restart() {
@@ -72,7 +73,7 @@ class D2LWizard extends LitElement {
 	}
 
 	_updateStep() {
-		const steps = this.shadowRoot.querySelector('slot').assignedElements();
+		const steps = this.shadowRoot.querySelector('slot').assignedNodes({ flatten: true }).filter((node) => node.nodeType === Node.ELEMENT_NODE);
 		this.stepCount = steps.length;
 
 		this.stepTitles = [];

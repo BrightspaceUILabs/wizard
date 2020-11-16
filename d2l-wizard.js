@@ -1,31 +1,25 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
-import '@polymer/iron-pages';
+import { css, LitElement, html } from 'lit-element';
 
-import './language-behaviour.js';
-import './d2l-single-step-header.js';
-import './d2l-step.js';
-
-class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.LanguageBehaviour], PolymerElement) {
+class D2LWizard extends LitElement {
 	static get properties() {
 		return {
 			stepTitles: {
 				type: Array,
-				value: function() { return []; }
+				attribute: 'step-titles'
 			},
 			stepCount: {
 				type: Number,
-				value: 0
+				attribute: 'step-count'
 			},
 			selectedStep: {
 				type: Number,
-				value: 0
+				attribute: 'selected-step'
 			}
 		};
 	}
-	static get template() {
-		return html`
-		<style>
+
+	static get styles() {
+		return css`
 			.header {
 				display: flex;
 				flex: 1;
@@ -34,49 +28,64 @@ class D2LWizard extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.L
 				margin: 30px 0px;
 				overflow-x: auto;
 			}
+		`;
+	}
 
-		</style>
+	constructor() {
+		super();
 
-		<div class="header">
-			<template is="dom-repeat" items="[[stepTitles]]" restamp>
-				<d2l-labs-single-step-header total-steps="[[stepCount]]" current-step="[[index]]" selected-step="[[selectedStep]]" title="[[item]]"></d2l-labs-single-step-header>
-			</template>
-		</div>
-
-		<iron-pages id="wizardPages" selected="[[selectedStep]]" selectable="d2l-labs-step" on-iron-items-changed="_updateSteps" >
-			<slot></slot>
-		</iron-pages>
-`;
+		this.stepTitles = [];
+		this.stepCount = 0;
+		this.selectedStep = 0;
 	}
 
 	next() {
-		var pages = this.$.wizardPages;
-		pages.selectNext();
+		this.selectedStep = (this.selectedStep + 1) === this.stepCount ? this.selectedStep : (this.selectedStep + 1);
+
+		this._updateStep();
+
 		if (window.parentIFrame) {
 			window.parentIFrame.scrollTo(0, 0);
 		}
+	}
 
-		this.selectedStep = pages.selected;
+	render() {
+		return html`
+			<div class="header">
+				${this.stepTitles.map((title, index) =>
+		html`
+						<d2l-labs-single-step-header total-steps="${this.stepCount}" current-step="${index}" selected-step="${this.selectedStep}" title="${title}"></d2l-labs-single-step-header>
+					`)}
+
+			</div>
+			<slot @slotchange="${this._handleSlotChange}"></slot>
+		`;
 	}
 
 	restart() {
 		this.selectedStep = 0;
+
+		this._updateStep();
 	}
 
-	_getSteps() {
-		return this.$.wizardPages.items;
+	_handleSlotChange() {
+		this._updateStep();
 	}
 
-	_updateSteps() {
-		var steps = this._getSteps();
+	_updateStep() {
+		const steps = this.shadowRoot.querySelector('slot').assignedNodes({ flatten: true }).filter((node) => node.nodeType === Node.ELEMENT_NODE);
+		this.stepCount = steps.length;
 
 		this.stepTitles = [];
-		steps.forEach(function(step) {
-			this.push('stepTitles', step.title);
-		}.bind(this));
+
+		steps.forEach((element, index) => {
+			this.stepTitles.push(element.attributes.title.value);
+			element.style.display = index !== this.selectedStep ? 'none' : '';
+		});
 
 		this.stepCount = steps.length;
 	}
+
 }
 
 customElements.define('d2l-labs-wizard', D2LWizard);

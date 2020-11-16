@@ -7,7 +7,7 @@ This is currently a WIP and is not ready for use.
 
 > Note: this is a ["labs" component](https://github.com/BrightspaceUI/guide/wiki/Component-Tiers). While functional, these tasks are prerequisites to promotion to BrightspaceUI "official" status:
 >
-> - [ ] [Design organization buy-in](https://github.com/BrightspaceUI/guide/wiki/Before-you-build#working-with-design)
+> - [x] [Design organization buy-in](https://github.com/BrightspaceUI/guide/wiki/Before-you-build#working-with-design)
 > - [x] [design.d2l entry](http://design.d2l/)
 > - [ ] [Architectural sign-off](https://github.com/BrightspaceUI/guide/wiki/Before-you-build#web-component-architecture)
 > - [x] [Continuous integration](https://github.com/BrightspaceUI/guide/wiki/Testing#testing-continuously-with-travis-ci)
@@ -17,10 +17,7 @@ This is currently a WIP and is not ready for use.
 > - [ ] [Visual diff tests](https://github.com/BrightspaceUI/visual-diff)
 > - [x] [Localization](https://github.com/BrightspaceUI/guide/wiki/Localization) with Serge (if applicable)
 > - [x] Demo page
-> - [ ] README documentation
-
-[Polymer](https://www.polymer-project.org) component for going through a setup in a multi step process.
-
+> - [X] README documentation
 
 For further information on this and other components, refer to [The Brightspace UI Guide](https://github.com/BrightspaceUI/guide/wiki).
 
@@ -50,50 +47,34 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) polyfill loa
 Add the component to your page
 
 ```html
-<d2l-labs-wizard id="wizard" on-stepper-restart="restart">
-	<d2l-labs-step title="Step 1" on-stepper-next="next">
+<d2l-labs-wizard id="wizard">
+	<d2l-labs-step title="Step 1">
 		<p> First step </p>
 	</d2l-labs-step>
 
-	<d2l-labs-step title="Step 2" on-stepper-next="save">
+	<d2l-labs-step title="Step 2">
 		<p> Second step </p>
 	</d2l-labs-step>
 </d2l-labs-wizard>
-```
-
-In the component using this, make sure you call `next` on the wizard.
-
-```js
-restart() {
-	this.$.wizard.restart();
-}
-
-next() {
-	// your validation
-	this.$.wizard.next();
-}
-
-save() {
-	// validate and save
-}
-```
-
+<script>
+	var wizard = document.getElementById('wizard');
+	wizard.addEventListener('stepper-next', function() {
+		wizard.next();
+	});
+	wizard.addEventListener('stepper-restart', function() {
+		wizard.restart();
+	});
+</script>
 
 
 ## Developing, Testing and Contributing
 
 After cloning the repo, run `npm install` to install dependencies.
 
-If you don't have it already, install the [Polymer CLI](https://www.polymer-project.org/2.0/docs/tools/polymer-cli) globally:
+To run the app and view the demo page:
 
 ```shell
-npm install -g polymer-cli
-```
-
-To start a [local web server](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#serve) that hosts the demo page and tests:
-
-```shell
-polymer serve
+npm run start
 ```
 
 To lint ([eslint](http://eslint.org/) and [Polymer lint](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#lint)):
@@ -102,16 +83,10 @@ To lint ([eslint](http://eslint.org/) and [Polymer lint](https://www.polymer-pro
 npm run lint
 ```
 
-To run unit tests locally using [Polymer test](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#tests):
-
-```shell
-polymer test --skip-plugin sauce
-```
-
 To lint AND run local unit tests:
 
 ```shell
-npm test
+npm run test
 ```
 
 ## Versioning & Releasing

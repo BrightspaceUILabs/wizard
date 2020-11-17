@@ -65,7 +65,7 @@ Add the component to your page
 		wizard.restart();
 	});
 </script>
-
+```
 
 ## Developing, Testing and Contributing
 

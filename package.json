@@ -1,7 +1,7 @@
 {
   "name": "@brightspace-ui-labs/wizard",
-  "version": "1.0.2",
-  "description": "Polymer based web-component for wizard",
+  "version": "1.1.0",
+  "description": "Lit element web-component for wizard",
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:lit",
     "lint:eslint": "eslint . --ext .js,.html",
@@ -26,7 +26,7 @@
     "d2l-wizard.js",
     "d2l-step.js",
     "d2l-single-step-header.js",
-    "language-behaviour.js",
+    "localization.js",
     "/lang"
   ],
   "author": "D2L Corporation",

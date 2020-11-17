@@ -43,21 +43,21 @@ describe('d2l-labs-single-step-header', function() {
 	describe('first', () => {
 		it('should have class name first', async() => {
 			const elem = await fixture(firstFixture);
-			expect(elem.root.children[1].className).to.equal('first ');
+			expect(elem.shadowRoot.children[0].className).to.equal('first ');
 		});
 	});
 
 	describe('last', () => {
 		it('should have class name last', async() => {
 			const elem = await fixture(lastFixture);
-			expect(elem.root.children[1].className).to.equal(' last');
+			expect(elem.shadowRoot.children[0].className).to.equal(' last');
 		});
 	});
 
 	describe('first and last', () => {
 		it('should have class name first and last', async() => {
 			const elem = await fixture(firstAndLastFixture);
-			expect(elem.root.children[1].className).to.equal('first last');
+			expect(elem.shadowRoot.children[0].className).to.equal('first last');
 		});
 	});
 

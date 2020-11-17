@@ -1,4 +1,4 @@
-import { css, LitElement, html } from 'lit-element';
+import { css, html, LitElement } from 'lit-element';
 
 class D2LWizard extends LitElement {
 	static get properties() {
@@ -39,16 +39,6 @@ class D2LWizard extends LitElement {
 		this.selectedStep = 0;
 	}
 
-	next() {
-		this.selectedStep = (this.selectedStep + 1) === this.stepCount ? this.selectedStep : (this.selectedStep + 1);
-
-		this._updateStep();
-
-		if (window.parentIFrame) {
-			window.parentIFrame.scrollTo(0, 0);
-		}
-	}
-
 	render() {
 		return html`
 			<div class="header">
@@ -60,6 +50,16 @@ class D2LWizard extends LitElement {
 			</div>
 			<slot @slotchange="${this._handleSlotChange}"></slot>
 		`;
+	}
+
+	next() {
+		this.selectedStep = (this.selectedStep + 1) === this.stepCount ? this.selectedStep : (this.selectedStep + 1);
+
+		this._updateStep();
+
+		if (window.parentIFrame) {
+			window.parentIFrame.scrollTo(0, 0);
+		}
 	}
 
 	restart() {

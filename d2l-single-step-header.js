@@ -1,30 +1,32 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
+import { css, html, LitElement } from 'lit-element';
+import { getLocalizeResources } from './localization.js';
+import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
 
-import '@brightspace-ui/core/components/icons/icon.js';
-import './language-behaviour.js';
+class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
-class D2LSingleStepHeader extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.LanguageBehaviour], PolymerElement) {
 	static get properties() {
 		return {
-			title: String,
+			title: {
+				type: String,
+				attribute: 'title'
+			},
 			totalSteps: {
 				type: Number,
-				value: 0
+				attribute: 'total-steps'
 			},
 			currentStep: {
 				type: Number,
-				value: 0
+				attribute: 'current-step'
 			},
 			selectedStep: {
 				type: Number,
-				value: 0
+				attribute: 'selected-step'
 			}
 		};
 	}
-	static get template() {
-		return html`
-		<style include="shared-styles">
+
+	static get styles() {
+		return css`
 			.circle {
 				height: 26px;
 				width: 26px;
@@ -103,61 +105,77 @@ class D2LSingleStepHeader extends mixinBehaviors([D2L.PolymerBehaviours.CustomBe
 			.last hr:last-child {
 				visibility: hidden;
 			}
+		`;
+	}
 
-		</style>
+	static async getLocalizeResources(langs) {
+		return getLocalizeResources(langs);
+	}
 
-		<div class$="[[_getIsFirst(currentStep)]] [[_getIsLast(totalSteps, currentStep)]]">
-			<div class="step">
-				<div class$="[[_getProgressStatus(selectedStep, currentStep)]] step-header">
-					<hr>
+	constructor() {
+		super();
 
-					<div class="circle" title="[[_getStepLabel(totalSteps, currentStep)]]">
-						<template is="dom-if" if="[[_isDone(selectedStep, currentStep)]]">
-							<d2l-icon class="done-icon" icon="d2l-tier1:check"></d2l-icon>
-						</template>
+		this.title = '';
+		this.totalSteps = 0;
+		this.currentStep = 0;
+		this.selectedStep = 0;
+	}
 
-						<template is="dom-if" if="[[_isInProgress(selectedStep, currentStep)]]">
-							<div class="inner-progress-circle"></div>
-						</template>
+	render() {
+		return html`
+			<div class="${this._getIsFirst()} ${this._getIsLast()}">
+				<div class="step">
+					<div class="${this._getProgressStatus()} step-header">
+						<hr>
+
+						<div class="circle" title="${this._getStepLabel()}">
+							${this._isDone() ? html`<d2l-icon class="done-icon" icon="d2l-tier1:check"></d2l-icon>` : html``}
+							${this._isInProgress() ? html`<div class="inner-progress-circle"></div>` : html``}
+						</div>
+
+						<hr>
 					</div>
 
-					<hr>
+					<div class="${this._getProgressStatus()} step-title">${this.title}</div>
 				</div>
-
-				<div class$="[[_getProgressStatus(selectedStep, currentStep)]] step-title">[[title]]</div>
 			</div>
-		</div>
-`;
+		`;
 	}
 
-	_getIsFirst(currentStep) {
-		if (currentStep === 0) {
+	_getIsFirst() {
+		if (this.currentStep === 0) {
 			return 'first';
 		}
+		return '';
 	}
-	_getIsLast(totalSteps, currentStep) {
-		if (totalSteps === currentStep + 1) {
+
+	_getIsLast() {
+		if (this.totalSteps === this.currentStep + 1) {
 			return 'last';
 		}
+		return '';
 	}
-	_getProgressStatus(selectedStep, currentStep) {
-		var className = 'not-started';
-		if (this._isDone(selectedStep, currentStep)) {
+
+	_getProgressStatus() {
+		let className = 'not-started';
+		if (this._isDone()) {
 			className = 'done';
-		} else if (this._isInProgress(selectedStep, currentStep)) {
+		} else if (this._isInProgress()) {
 			className = 'in-progress';
 		}
 		return className;
 	}
-	_getStepLabel(totalSteps, currentStep) {
-		return this.localize('aria.steplabel', 'totalSteps', totalSteps, 'currentStep', currentStep + 1);
-	}
-	_isDone(selectedStep, currentStep) {
-		return currentStep < selectedStep;
+
+	_getStepLabel() {
+		return this.localize('aria.steplabel', 'totalSteps', this.totalSteps, 'currentStep', this.currentStep + 1);
 	}
 
-	_isInProgress(selectedStep, currentStep) {
-		return currentStep === selectedStep;
+	_isDone() {
+		return this.currentStep < this.selectedStep;
+	}
+
+	_isInProgress() {
+		return this.currentStep === this.selectedStep;
 	}
 
 }

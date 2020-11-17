@@ -1,27 +1,32 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
-
 import '@brightspace-ui/core/components/button/button.js';
-import './language-behaviour.js';
+import { css, html, LitElement } from 'lit-element';
+import { getLocalizeResources } from './localization.js';
+import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
 
-class D2LStep extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.LanguageBehaviour], PolymerElement) {
+class D2LStep extends LocalizeMixin(LitElement) {
 	static get properties() {
 		return {
-			nextButtonTitle: String,
-			restartButtonTitle: String,
+			nextButtonTitle: {
+				type: String,
+				attribute: 'next-button-title'
+			},
+			restartButtonTitle: {
+				type: String,
+				attribute: 'restart-button-title'
+			},
 			hideRestartButton: {
 				type: Boolean,
-				value: false
+				attribute: 'hide-restart-button'
 			},
 			disableNextButton: {
 				type: Boolean,
-				value: false
+				attribute: 'disable-next-button'
 			}
 		};
 	}
-	static get template() {
-		return html`
-		<style>
+
+	static get styles() {
+		return css`
 			.footer {
 				display: flex;
 				justify-content: space-between;
@@ -29,39 +34,39 @@ class D2LStep extends mixinBehaviors([D2L.PolymerBehaviours.CustomBehaviours.Lan
 			}
 
 			.button-next {
-				margin-left: auto;
+				float: right;
 			}
-
-		</style>
-
-		<slot></slot>
-		<div class="footer">
-			<template is="dom-if" if="[[!hideRestartButton]]">
-				<d2l-button on-click="_restartClick">[[restartButtonTitle]]</d2l-button>
-			</template>
-
-			<d2l-button class="button-next" on-click="_nextClick" primary="" disabled$="[[disableNextButton]]">[[nextButtonTitle]]</d2l-button>
-		</div>
-`;
+		`;
 	}
 
-	ready() {
-		super.ready();
-		if (!this.nextButtonTitle) {
-			this.nextButtonTitle = this.localize('stepper.defaults.next');
-		}
-		if (!this.restartButtonTitle) {
-			this.restartButtonTitle = this.localize('stepper.defaults.restart');
-		}
+	static async getLocalizeResources(langs) {
+		return getLocalizeResources(langs);
+	}
+
+	constructor() {
+		super();
+		this.hideRestartButton = false;
+		this.disableNextButton = false;
+	}
+
+	render() {
+		return html`
+			<slot></slot>
+			<div class="footer">
+				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
+
+				<d2l-button class="button-next" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
+			</div>
+		`;
 	}
 
 	_nextClick() {
 		this.dispatchEvent(new CustomEvent('stepper-next', { bubbles: true, composed: true }));
 	}
+
 	_restartClick() {
 		this.dispatchEvent(new CustomEvent('stepper-restart', { bubbles: true, composed: true }));
 	}
-
 }
 
 customElements.define('d2l-labs-step', D2LStep);

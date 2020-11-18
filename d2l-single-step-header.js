@@ -1,4 +1,5 @@
 import { css, html, LitElement } from 'lit-element';
+import { bodySmallStyles } from '@brightspace-ui/core/components/typography/styles.js';
 import { getLocalizeResources } from './localization.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
 
@@ -26,7 +27,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 	}
 
 	static get styles() {
-		return css`
+		return [bodySmallStyles, css`
 			.circle {
 				height: 26px;
 				width: 26px;
@@ -58,12 +59,9 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 			}
 
 			.step-title {
+				margin: auto;
 				max-width: 120px;
 				overflow-wrap: break-word;
-				font-size: var(--d2l-body-small-text_-_font-size, 14px);
-				font-weight: var(--d2l-body-small-text_-_font-weight, 400);
-				line-height: var(--d2l-body-small-text_-_line-height, 20px);
-				margin: var(--d2l-body-small-text_-_margin, auto);
 				border: none !important;
 				background: none !important;
 				color: var(--d2l-color-ferrite);
@@ -107,7 +105,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 			.last hr:last-child {
 				visibility: hidden;
 			}
-		`;
+		`];
 	}
 
 	static async getLocalizeResources(langs) {
@@ -138,7 +136,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 						<hr>
 					</div>
 
-					<div class="${this._getProgressStatus()} step-title">${this.title}</div>
+					<div class="${this._getProgressStatus()} step-title d2l-body-small">${this.title}</div>
 				</div>
 			</div>
 		`;

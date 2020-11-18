@@ -1,7 +1,7 @@
 import { css, html, LitElement } from 'lit-element';
+import { bodySmallStyles } from '@brightspace-ui/core/components/typography/styles.js';
 import { getLocalizeResources } from './localization.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
-import { bodySmallStyles } from '@brightspace-ui/core/components/typography/styles.js';
 
 class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 

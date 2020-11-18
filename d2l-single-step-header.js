@@ -58,10 +58,12 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 			}
 
 			.step-title {
-				margin: auto;
 				max-width: 120px;
 				overflow-wrap: break-word;
-				@apply --d2l-body-small-text;
+				font-size: var(--d2l-body-small-text_-_font-size, 14px);
+				font-weight: var(--d2l-body-small-text_-_font-weight, 400);
+				line-height: var(--d2l-body-small-text_-_line-height, 20px);
+				margin: var(--d2l-body-small-text_-_margin, auto);
 				border: none !important;
 				background: none !important;
 				color: var(--d2l-color-ferrite);

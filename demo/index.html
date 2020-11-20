@@ -17,15 +17,15 @@
 		<h2>Basic Wizard</h2>
 		<d2l-demo-snippet>
 			<d2l-labs-wizard id="wizard" selected-step="1">
-				<d2l-labs-step title="Step 1" hide-restart-button="true">
+				<d2l-labs-step next-button-aria-label="Go to step 2" title="Lets get started" hide-restart-button="true">
 					<p> first step </p>
 				</d2l-labs-step>
 
-				<d2l-labs-step title="Step 2">
+				<d2l-labs-step aria-title="This is the second step">
 					<p> second step </p>
 				</d2l-labs-step>
 
-				<d2l-labs-step title="Step 3" next-button-title="Done">
+				<d2l-labs-step title="Almost done" next-button-title="Done" >
 					<p> Last step </p>
 				</d2l-labs-step>
 			</d2l-labs-wizard>

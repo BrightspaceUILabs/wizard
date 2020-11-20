@@ -46,7 +46,6 @@ class D2LStep extends LocalizeMixin(LitElement) {
 				type: Number,
 				attribute: 'this-step'
 			}
-
 		};
 	}
 
@@ -84,11 +83,14 @@ class D2LStep extends LocalizeMixin(LitElement) {
 		this.nextButtonAriaLabel = '';
 		this.restartButtonAriaLabel = '';
 		this.ariaTitle = '';
+		this.title = '';
+		this.stepCount = 1;
+		this.thisStep = 1;
 	}
 
 	render() {
 		return html`
-			<div id="aria-title" tabindex="0" class="screen-reader-only">${this._getAriaTitle() }</div>
+			<div id="aria-title" tabindex="0" class="screen-reader-only">${this._getAriaTitle()}</div>
 			<slot></slot>
 			<div class="footer">
 				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button aria-label="${this.restartButtonAriaLabel}" @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
@@ -102,9 +104,9 @@ class D2LStep extends LocalizeMixin(LitElement) {
 		if (this.ariaTitle) {
 			return this.ariaTitle;
 		} else if (this.title) {
-			return `${this.title}. ${this.localize('aria.steplabel', 'totalSteps', this.stepCount, 'currentStep', this.thisStep)}`;
+			return `${this.title}. ${this._getStepLabel()}`;
 		}
-		return this.localize('aria.steplabel', 'totalSteps', this.stepCount, 'currentStep', this.thisStep);
+		return this._getStepLabel();
 	}
 
 	_getStepLabel() {

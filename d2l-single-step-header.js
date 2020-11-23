@@ -28,14 +28,14 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
 	static get styles() {
 		return [bodySmallStyles, css`
-			.circle {
+			.d2l-single-step-header-circle {
 				height: 26px;
 				width: 26px;
 				border-radius: 50%;
 				border: 2px solid;
 			}
 
-			.inner-progress-circle {
+			.d2l-single-step-header-inner-progress-circle {
 				height: 22px;
 				width: 22px;
 				border-radius: 50%;
@@ -43,7 +43,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 				margin: 2px;
 			}
 
-			.step {
+			.d2l-single-step-header-step {
 				display: inline-block;
 				text-align: center;
 			}
@@ -54,11 +54,11 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 				margin: auto;
 			}
 
-			.step-header {
+			.d2l-single-step-header-step-header {
 				display: flex;
 			}
 
-			.step-title {
+			.d2l-single-step-header-step-title {
 				margin: auto;
 				max-width: 120px;
 				overflow-wrap: break-word;
@@ -67,42 +67,42 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 				color: var(--d2l-color-ferrite);
 			}
 
-			.done-icon {
+			.d2l-single-step-header-done-icon {
 				color: var(--d2l-color-olivine);
 				height: 20px;
 				width: 20px;
 				padding: 2px;
 			}
 
-			.done {
+			.d2l-single-step-header-done {
 				border-color: var(--d2l-color-olivine);
 				color: var(--d2l-color-olivine);
 			}
 
-			.done hr,
-			.in-progress hr:first-child {
+			.d2l-single-step-header-done hr,
+			.d2l-single-step-header-in-progress hr:first-child {
 				background: var(--d2l-color-olivine);
 				border: var(--d2l-color-olivine);
 			}
 
-			.in-progress {
+			.d2l-single-step-header-in-progress {
 				border-color: var(--d2l-color-celestine);
 				color: var(--d2l-color-celestine);
 			}
 
-			.not-started .circle {
+			.d2l-single-step-header-not-started .d2l-single-step-header-circle {
 				background-color: var(--d2l-color-mica);
 				border-color: var(--d2l-color-mica);
 			}
 
-			.in-progress hr:last-child,
-			.not-started hr {
+			.d2l-single-step-header-in-progress hr:last-child,
+			.d2l-single-step-header-not-started hr {
 				background: var(--d2l-color-mica);
 				border: var(--d2l-color-mica);
 			}
 
-			.first hr:first-child,
-			.last hr:last-child {
+			.d2l-single-step-header-first hr:first-child,
+			.d2l-single-step-header-last hr:last-child {
 				visibility: hidden;
 			}
 		`];
@@ -124,19 +124,19 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 	render() {
 		return html`
 			<div class="${this._getIsFirst()} ${this._getIsLast()}">
-				<div class="step">
-					<div class="${this._getProgressStatus()} step-header">
+				<div class="d2l-single-step-header-step">
+					<div class="${this._getProgressStatus()} d2l-single-step-header-step-header">
 						<hr>
 
-						<div class="circle" title="${this._getStepLabel()}">
-							${this._isDone() ? html`<d2l-icon class="done-icon" icon="d2l-tier1:check"></d2l-icon>` : html``}
-							${this._isInProgress() ? html`<div class="inner-progress-circle"></div>` : html``}
+						<div class="d2l-single-step-header-circle" title="${this._getStepLabel()}">
+							${this._isDone() ? html`<d2l-icon class="d2l-single-step-header-done-icon" icon="d2l-tier1:check"></d2l-icon>` : html``}
+							${this._isInProgress() ? html`<div class="d2l-single-step-header-inner-progress-circle"></div>` : html``}
 						</div>
 
 						<hr>
 					</div>
 
-					<div class="${this._getProgressStatus()} step-title d2l-body-small">${this.title}</div>
+					<div class="${this._getProgressStatus()} d2l-single-step-header-step-title d2l-body-small">${this.title}</div>
 				</div>
 			</div>
 		`;
@@ -144,24 +144,24 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
 	_getIsFirst() {
 		if (this.currentStep === 0) {
-			return 'first';
+			return 'd2l-single-step-header-first';
 		}
 		return '';
 	}
 
 	_getIsLast() {
 		if (this.totalSteps === this.currentStep + 1) {
-			return 'last';
+			return 'd2l-single-step-header-last';
 		}
 		return '';
 	}
 
 	_getProgressStatus() {
-		let className = 'not-started';
+		let className = 'd2l-single-step-header-not-started';
 		if (this._isDone()) {
-			className = 'done';
+			className = 'd2l-single-step-header-done';
 		} else if (this._isInProgress()) {
-			className = 'in-progress';
+			className = 'd2l-single-step-header-in-progress';
 		}
 		return className;
 	}

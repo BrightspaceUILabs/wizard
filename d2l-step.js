@@ -2,6 +2,7 @@ import '@brightspace-ui/core/components/button/button.js';
 import { css, html, LitElement } from 'lit-element';
 import { getLocalizeResources } from './localization.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
+import { offscreenStyles } from '@brightspace-ui/core/components/offscreen/offscreen.js';
 
 class D2LStep extends LocalizeMixin(LitElement) {
 	static get properties() {
@@ -50,26 +51,17 @@ class D2LStep extends LocalizeMixin(LitElement) {
 	}
 
 	static get styles() {
-		return css`
-			.footer {
+		return [offscreenStyles, css`
+			.d2l-step-footer {
 				display: flex;
 				justify-content: space-between;
 				width: 100%;
 			}
 
-			.button-next {
+			.d2l-step-button-next {
 				float: right;
 			}
-
-			.screen-reader-only {
-				position:absolute;
-				left:-10000px;
-				top:auto;
-				width:1px;
-				height:1px;
-				overflow:hidden;
-			}
-		`;
+		`];
 	}
 
 	static async getLocalizeResources(langs) {
@@ -90,12 +82,12 @@ class D2LStep extends LocalizeMixin(LitElement) {
 
 	render() {
 		return html`
-			<div id="aria-title" tabindex="0" class="screen-reader-only">${this._getAriaTitle()}</div>
+			<div id="aria-title" tabindex="0" class="d2l-offscreen">${this._getAriaTitle()}</div>
 			<slot></slot>
-			<div class="footer">
+			<div class="d2l-step-footer">
 				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button aria-label="${this.restartButtonAriaLabel}" @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
 
-				<d2l-button class="button-next" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
+				<d2l-button class="d2l-step-button-next" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
 			</div>
 		`;
 	}

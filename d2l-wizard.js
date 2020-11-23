@@ -21,7 +21,7 @@ class D2LWizard extends LitElement {
 
 	static get styles() {
 		return css`
-			.header {
+			.d2l-wizard-header {
 				display: flex;
 				flex: 1;
 				width: 100%;
@@ -42,7 +42,7 @@ class D2LWizard extends LitElement {
 
 	render() {
 		return html`
-			<div class="header">
+			<div class="d2l-wizard-header">
 				${this.stepTitles.map((title, index) =>
 		html`
 						<d2l-labs-single-step-header total-steps="${this.stepCount}" current-step="${index}" selected-step="${this.selectedStep}" title="${title}"></d2l-labs-single-step-header>

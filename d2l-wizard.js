@@ -21,7 +21,7 @@ class D2LWizard extends LitElement {
 
 	static get styles() {
 		return css`
-			.header {
+			.d2l-labs-wizard-header {
 				display: flex;
 				flex: 1;
 				width: 100%;
@@ -42,7 +42,7 @@ class D2LWizard extends LitElement {
 
 	render() {
 		return html`
-			<div class="header">
+			<div class="d2l-labs-wizard-header">
 				${this.stepTitles.map((title, index) =>
 		html`
 						<d2l-labs-single-step-header total-steps="${this.stepCount}" current-step="${index}" selected-step="${this.selectedStep}" title="${title}"></d2l-labs-single-step-header>
@@ -61,12 +61,29 @@ class D2LWizard extends LitElement {
 		if (window.parentIFrame) {
 			window.parentIFrame.scrollTo(0, 0);
 		}
+
+		this._focusAriaTitleOfStep();
 	}
 
 	restart() {
 		this.selectedStep = 0;
 
 		this._updateStep();
+
+		this._focusAriaTitleOfStep();
+	}
+
+	_focusAriaTitleOfStep() {
+		const slotChildren = this.shadowRoot.querySelector('slot').assignedNodes({ flatten: true }).filter(node => node.nodeType === Node.ELEMENT_NODE);
+		slotChildren.forEach(child => {
+			if (child.style.display !== 'none') {
+				const ariaTitle = child.shadowRoot.getElementById('aria-title');
+				if (ariaTitle) {
+					ariaTitle.focus();
+					return;
+				}
+			}
+		});
 	}
 
 	_handleSlotChange() {
@@ -80,7 +97,10 @@ class D2LWizard extends LitElement {
 		this.stepTitles = [];
 
 		steps.forEach((element, index) => {
-			this.stepTitles.push(element.attributes.title.value);
+			const title = element.attributes.title;
+			this.stepTitles.push(!title ? '' : title.value);
+			element.setAttribute('step-count', this.stepCount);
+			element.setAttribute('this-step', index + 1);
 			element.style.display = index !== this.selectedStep ? 'none' : '';
 		});
 

@@ -1,0 +1,18 @@
+name: CI
+on: pull_request
+jobs:
+  test:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Brightspace/third-party-actions@actions/checkout
+      - uses: Brightspace/third-party-actions@actions/setup-node
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Unit Tests (Headless)
+        run: npm run test:headless
+        env:
+          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_LABS_ACCESS_KEY }}
+          SAUCE_USERNAME: lweber-d2l

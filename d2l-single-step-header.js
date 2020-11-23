@@ -28,14 +28,14 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
 	static get styles() {
 		return [bodySmallStyles, css`
-			.d2l-single-step-header-circle {
+			.d2l-labs-single-step-header-circle {
 				height: 26px;
 				width: 26px;
 				border-radius: 50%;
 				border: 2px solid;
 			}
 
-			.d2l-single-step-header-inner-progress-circle {
+			.d2l-labs-single-step-header-inner-progress-circle {
 				height: 22px;
 				width: 22px;
 				border-radius: 50%;
@@ -43,7 +43,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 				margin: 2px;
 			}
 
-			.d2l-single-step-header-step {
+			.d2l-labs-single-step-header-step {
 				display: inline-block;
 				text-align: center;
 			}
@@ -54,11 +54,11 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 				margin: auto;
 			}
 
-			.d2l-single-step-header-step-header {
+			.d2l-labs-single-step-header-step-header {
 				display: flex;
 			}
 
-			.d2l-single-step-header-step-title {
+			.d2l-labs-single-step-header-step-title {
 				margin: auto;
 				max-width: 120px;
 				overflow-wrap: break-word;
@@ -67,42 +67,42 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 				color: var(--d2l-color-ferrite);
 			}
 
-			.d2l-single-step-header-done-icon {
+			.d2l-labs-single-step-header-done-icon {
 				color: var(--d2l-color-olivine);
 				height: 20px;
 				width: 20px;
 				padding: 2px;
 			}
 
-			.d2l-single-step-header-done {
+			.d2l-labs-single-step-header-done {
 				border-color: var(--d2l-color-olivine);
 				color: var(--d2l-color-olivine);
 			}
 
-			.d2l-single-step-header-done hr,
-			.d2l-single-step-header-in-progress hr:first-child {
+			.d2l-labs-single-step-header-done hr,
+			.d2l-labs-single-step-header-in-progress hr:first-child {
 				background: var(--d2l-color-olivine);
 				border: var(--d2l-color-olivine);
 			}
 
-			.d2l-single-step-header-in-progress {
+			.d2l-labs-single-step-header-in-progress {
 				border-color: var(--d2l-color-celestine);
 				color: var(--d2l-color-celestine);
 			}
 
-			.d2l-single-step-header-not-started .d2l-single-step-header-circle {
+			.d2l-labs-single-step-header-not-started .d2l-labs-single-step-header-circle {
 				background-color: var(--d2l-color-mica);
 				border-color: var(--d2l-color-mica);
 			}
 
-			.d2l-single-step-header-in-progress hr:last-child,
-			.d2l-single-step-header-not-started hr {
+			.d2l-labs-single-step-header-in-progress hr:last-child,
+			.d2l-labs-single-step-header-not-started hr {
 				background: var(--d2l-color-mica);
 				border: var(--d2l-color-mica);
 			}
 
-			.d2l-single-step-header-first hr:first-child,
-			.d2l-single-step-header-last hr:last-child {
+			.d2l-labs-single-step-header-first hr:first-child,
+			.d2l-labs-single-step-header-last hr:last-child {
 				visibility: hidden;
 			}
 		`];
@@ -124,19 +124,19 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 	render() {
 		return html`
 			<div class="${this._getIsFirst()} ${this._getIsLast()}">
-				<div class="d2l-single-step-header-step">
-					<div class="${this._getProgressStatus()} d2l-single-step-header-step-header">
+				<div class="d2l-labs-single-step-header-step">
+					<div class="${this._getProgressStatus()} d2l-labs-single-step-header-step-header">
 						<hr>
 
-						<div class="d2l-single-step-header-circle" title="${this._getStepLabel()}">
-							${this._isDone() ? html`<d2l-icon class="d2l-single-step-header-done-icon" icon="d2l-tier1:check"></d2l-icon>` : html``}
-							${this._isInProgress() ? html`<div class="d2l-single-step-header-inner-progress-circle"></div>` : html``}
+						<div class="d2l-labs-single-step-header-circle" title="${this._getStepLabel()}">
+							${this._isDone() ? html`<d2l-icon class="d2l-labs-single-step-header-done-icon" icon="d2l-tier1:check"></d2l-icon>` : html``}
+							${this._isInProgress() ? html`<div class="d2l-labs-single-step-header-inner-progress-circle"></div>` : html``}
 						</div>
 
 						<hr>
 					</div>
 
-					<div class="${this._getProgressStatus()} d2l-single-step-header-step-title d2l-body-small">${this.title}</div>
+					<div class="${this._getProgressStatus()} d2l-labs-single-step-header-step-title d2l-body-small">${this.title}</div>
 				</div>
 			</div>
 		`;
@@ -144,24 +144,24 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
 	_getIsFirst() {
 		if (this.currentStep === 0) {
-			return 'd2l-single-step-header-first';
+			return 'd2l-labs-single-step-header-first';
 		}
 		return '';
 	}
 
 	_getIsLast() {
 		if (this.totalSteps === this.currentStep + 1) {
-			return 'd2l-single-step-header-last';
+			return 'd2l-labs-single-step-header-last';
 		}
 		return '';
 	}
 
 	_getProgressStatus() {
-		let className = 'd2l-single-step-header-not-started';
+		let className = 'd2l-labs-single-step-header-not-started';
 		if (this._isDone()) {
-			className = 'd2l-single-step-header-done';
+			className = 'd2l-labs-single-step-header-done';
 		} else if (this._isInProgress()) {
-			className = 'd2l-single-step-header-in-progress';
+			className = 'd2l-labs-single-step-header-in-progress';
 		}
 		return className;
 	}

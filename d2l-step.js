@@ -52,13 +52,13 @@ class D2LStep extends LocalizeMixin(LitElement) {
 
 	static get styles() {
 		return [offscreenStyles, css`
-			.d2l-step-footer {
+			.d2l-labs-step-footer {
 				display: flex;
 				justify-content: space-between;
 				width: 100%;
 			}
 
-			.d2l-step-button-next {
+			.d2l-labs-step-button-next {
 				float: right;
 			}
 		`];
@@ -84,10 +84,10 @@ class D2LStep extends LocalizeMixin(LitElement) {
 		return html`
 			<div id="aria-title" tabindex="0" class="d2l-offscreen">${this._getAriaTitle()}</div>
 			<slot></slot>
-			<div class="d2l-step-footer">
+			<div class="d2l-labs-step-footer">
 				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button aria-label="${this.restartButtonAriaLabel}" @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
 
-				<d2l-button class="d2l-step-button-next" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
+				<d2l-button class="d2l-labs-step-button-next" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
 			</div>
 		`;
 	}

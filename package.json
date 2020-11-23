@@ -1,6 +1,6 @@
 {
   "name": "@brightspace-ui-labs/wizard",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Lit element web-component for wizard",
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:lit",

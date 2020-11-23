@@ -14,5 +14,5 @@ jobs:
       - name: Unit Tests (Headless)
         run: npm run test:headless
         env:
-          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_LABS_ACCESS_KEY }}
+          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY_LWEBER }}
           SAUCE_USERNAME: lweber-d2l

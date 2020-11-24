@@ -3,7 +3,6 @@
 This is currently a WIP and is not ready for use.
 
 [![NPM version](https://img.shields.io/npm/v/@brightspace-ui-labs/wizard.svg)](https://www.npmjs.org/package/@brightspace-ui-labs/wizard)
-![Build status](https://github.com/BrightspaceUILabs/wizard/workflows/CI/badge.svg)
 
 > Note: this is a ["labs" component](https://github.com/BrightspaceUI/guide/wiki/Component-Tiers). While functional, these tasks are prerequisites to promotion to BrightspaceUI "official" status:
 >

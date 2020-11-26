@@ -11,9 +11,17 @@ class D2LStep extends LocalizeMixin(LitElement) {
 				type: String,
 				attribute: 'next-button-title'
 			},
+			nextButtonTooltip: {
+				type: String,
+				attribute: 'next-button-tooltip'
+			},
 			restartButtonTitle: {
 				type: String,
 				attribute: 'restart-button-title'
+			},
+			restartButtonTooltip: {
+				type: String,
+				attribute: 'restart-button-tooltip'
 			},
 			hideRestartButton: {
 				type: Boolean,
@@ -85,9 +93,9 @@ class D2LStep extends LocalizeMixin(LitElement) {
 			<div id="aria-title" tabindex="0" class="d2l-offscreen">${this._getAriaTitle()}</div>
 			<slot></slot>
 			<div class="d2l-labs-step-footer">
-				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button title="${ this.localize('restart.button.tooltip') }" aria-label="${this.restartButtonAriaLabel}" @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
+				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button title="${ !this.restartButtonTooltip ? this.localize('restart.button.tooltip') : this.restartButtonTooltip }" aria-label="${this.restartButtonAriaLabel}" @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
 
-				<d2l-button class="d2l-labs-step-button-next" title="${ !this.nextButtonTitle ? this.localize('next.button.tooltip') : this.localize('save.button.tooltip') }" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
+				<d2l-button class="d2l-labs-step-button-next" title="${ !this.nextButtonTooltip ? this.localize('next.button.tooltip') : this.nextButtonTooltip }" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
 			</div>
 		`;
 	}

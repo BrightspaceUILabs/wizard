@@ -85,9 +85,9 @@ class D2LStep extends LocalizeMixin(LitElement) {
 			<div id="aria-title" tabindex="0" class="d2l-offscreen">${this._getAriaTitle()}</div>
 			<slot></slot>
 			<div class="d2l-labs-step-footer">
-				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button aria-label="${this.restartButtonAriaLabel}" @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
+				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button title="${ this.localize('restart.button.tooltip') }" aria-label="${this.restartButtonAriaLabel}" @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
 
-				<d2l-button class="d2l-labs-step-button-next" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
+				<d2l-button class="d2l-labs-step-button-next" title="${ !this.nextButtonTitle ? this.localize('next.button.tooltip') : this.localize('save.button.tooltip') }" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
 			</div>
 		`;
 	}

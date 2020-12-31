@@ -2,8 +2,8 @@
 
 export default {
 	"aria.steplabel": "Adım {currentStep} / {totalSteps}",
-	"stepper.defaults.next": "Next",
+	"stepper.defaults.next": "İleri",
 	"stepper.defaults.restart": "Yeniden Başlat",
-	"restart.button.tooltip": "Back to first step",
-	"next.button.tooltip": "Proceed to next step"
+	"restart.button.tooltip": "İlk adıma geri dön",
+	"next.button.tooltip": "Sonraki adıma ilerle"
 };

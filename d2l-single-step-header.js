@@ -29,18 +29,18 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 	static get styles() {
 		return [bodySmallStyles, css`
 			.d2l-labs-single-step-header-circle {
+				border: 2px solid;
+				border-radius: 50%;
 				height: 26px;
 				width: 26px;
-				border-radius: 50%;
-				border: 2px solid;
 			}
 
 			.d2l-labs-single-step-header-inner-progress-circle {
-				height: 22px;
-				width: 22px;
-				border-radius: 50%;
 				background-color: var(--d2l-color-celestine);
+				border-radius: 50%;
+				height: 22px;
 				margin: 2px;
+				width: 22px;
 			}
 
 			.d2l-labs-single-step-header-step {
@@ -49,9 +49,9 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 			}
 
 			hr {
-				width: 60px;
 				height: 4px;
 				margin: auto;
+				width: 60px;
 			}
 
 			.d2l-labs-single-step-header-step-header {
@@ -59,19 +59,19 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 			}
 
 			.d2l-labs-single-step-header-step-title {
+				background: none !important;
+				border: none !important;
+				color: var(--d2l-color-ferrite);
 				margin: auto;
 				max-width: 120px;
 				overflow-wrap: break-word;
-				border: none !important;
-				background: none !important;
-				color: var(--d2l-color-ferrite);
 			}
 
 			.d2l-labs-single-step-header-done-icon {
 				color: var(--d2l-color-olivine);
 				height: 20px;
-				width: 20px;
 				padding: 2px;
+				width: 20px;
 			}
 
 			.d2l-labs-single-step-header-done {

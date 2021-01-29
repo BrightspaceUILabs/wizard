@@ -24,10 +24,10 @@ class D2LWizard extends LitElement {
 			.d2l-labs-wizard-header {
 				display: flex;
 				flex: 1;
-				width: 100%;
 				justify-content: center;
-				margin: 30px 0px;
+				margin: 30px 0;
 				overflow-x: auto;
+				width: 100%;
 			}
 		`;
 	}

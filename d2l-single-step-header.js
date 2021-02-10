@@ -2,6 +2,7 @@ import { css, html, LitElement } from 'lit-element';
 import { bodySmallStyles } from '@brightspace-ui/core/components/typography/styles.js';
 import { getLocalizeResources } from './localization.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
+import { styleMap } from 'lit-html/directives/style-map.js';
 
 class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
@@ -22,6 +23,10 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 			selectedStep: {
 				type: Number,
 				attribute: 'selected-step'
+			},
+			fillHeaderWidth: {
+				type: Boolean,
+				attribute: 'fill-header-width'
 			}
 		};
 	}
@@ -63,7 +68,6 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 				border: none !important;
 				color: var(--d2l-color-ferrite);
 				margin: auto;
-				max-width: 120px;
 				overflow-wrap: break-word;
 			}
 
@@ -119,9 +123,13 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 		this.totalSteps = 0;
 		this.currentStep = 0;
 		this.selectedStep = 0;
+		this.fillHeaderWidth = false;
 	}
 
 	render() {
+		const width = {
+			'max-width': this.fillHeaderWidth ? '150px' : '120px',
+		};
 		return html`
 			<div class="${this._getIsFirst()} ${this._getIsLast()}">
 				<div class="d2l-labs-single-step-header-step">
@@ -135,8 +143,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
 						<hr>
 					</div>
-
-					<div class="${this._getProgressStatus()} d2l-labs-single-step-header-step-title d2l-body-small">${this.title}</div>
+					<div class="${this._getProgressStatus()} d2l-labs-single-step-header-step-title d2l-body-small" style="${styleMap(width)}"></div>${this.title}</div>
 				</div>
 			</div>
 		`;

@@ -73,12 +73,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 			}
 
 			:host([fill-header-width]) .d2l-labs-single-step-header-step-title {
-				background: none !important;
-				border: none !important;
-				color: var(--d2l-color-ferrite);
-				margin: auto;
 				max-width: 150px;
-				overflow-wrap: break-word;
 			}
 
 			.d2l-labs-single-step-header-done-icon {
@@ -133,6 +128,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 		this.totalSteps = 0;
 		this.currentStep = 0;
 		this.selectedStep = 0;
+		this.fillHeaderWidth = false;
 	}
 
 	render() {

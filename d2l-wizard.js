@@ -43,6 +43,7 @@ class D2LWizard extends LitElement {
 		this.stepTitles = [];
 		this.stepCount = 0;
 		this.selectedStep = 0;
+		this.fillHeaderWidth = false;
 	}
 
 	render() {

@@ -145,7 +145,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
 						<hr>
 					</div>
-					<div class="${this._getProgressStatus()} d2l-labs-single-step-header-step-title d2l-body-small"></div>${this.title}</div>
+					<div class="${this._getProgressStatus()} d2l-labs-single-step-header-step-title d2l-body-small">${this.title}</div>
 				</div>
 			</div>
 		`;

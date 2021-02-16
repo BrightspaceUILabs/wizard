@@ -22,6 +22,11 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 			selectedStep: {
 				type: Number,
 				attribute: 'selected-step'
+			},
+			fillHeaderWidth: {
+				type: Boolean,
+				attribute: 'fill-header-width',
+				reflect: true
 			}
 		};
 	}
@@ -65,6 +70,10 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 				margin: auto;
 				max-width: 120px;
 				overflow-wrap: break-word;
+			}
+
+			:host([fill-header-width]) .d2l-labs-single-step-header-step-title {
+				max-width: 150px;
 			}
 
 			.d2l-labs-single-step-header-done-icon {
@@ -119,6 +128,7 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 		this.totalSteps = 0;
 		this.currentStep = 0;
 		this.selectedStep = 0;
+		this.fillHeaderWidth = false;
 	}
 
 	render() {
@@ -135,7 +145,6 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 
 						<hr>
 					</div>
-
 					<div class="${this._getProgressStatus()} d2l-labs-single-step-header-step-title d2l-body-small">${this.title}</div>
 				</div>
 			</div>

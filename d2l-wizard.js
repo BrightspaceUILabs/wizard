@@ -15,6 +15,11 @@ class D2LWizard extends LitElement {
 			selectedStep: {
 				type: Number,
 				attribute: 'selected-step'
+			},
+			fillHeaderWidth: {
+				type: Boolean,
+				attribute: 'fill-header-width',
+				reflect: true
 			}
 		};
 	}
@@ -38,6 +43,7 @@ class D2LWizard extends LitElement {
 		this.stepTitles = [];
 		this.stepCount = 0;
 		this.selectedStep = 0;
+		this.fillHeaderWidth = false;
 	}
 
 	render() {
@@ -45,7 +51,7 @@ class D2LWizard extends LitElement {
 			<div class="d2l-labs-wizard-header">
 				${this.stepTitles.map((title, index) =>
 		html`
-						<d2l-labs-single-step-header total-steps="${this.stepCount}" current-step="${index}" selected-step="${this.selectedStep}" title="${title}"></d2l-labs-single-step-header>
+						<d2l-labs-single-step-header total-steps="${this.stepCount}" current-step="${index}" selected-step="${this.selectedStep}" title="${title}" ?fill-header-width="${this.fillHeaderWidth}"></d2l-labs-single-step-header>
 					`)}
 
 			</div>

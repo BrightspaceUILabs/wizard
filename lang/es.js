@@ -4,6 +4,6 @@ export default {
 	"aria.steplabel": "Paso {currentStep} de {totalSteps}",
 	"stepper.defaults.next": "Siguiente",
 	"stepper.defaults.restart": "Reiniciar",
-	"restart.button.tooltip": "Back to first step",
-	"next.button.tooltip": "Proceed to next step"
+	"restart.button.tooltip": "Volver al primer paso",
+	"next.button.tooltip": "Avanzar al siguiente paso"
 };

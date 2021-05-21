@@ -1,9 +1,9 @@
 /* eslint quotes: 0 */
 
 export default {
-	"aria.steplabel": "$$$$$ {currentStep} $$$$ {totalSteps}",
-	"stepper.defaults.next": "$$$$$$$$$$",
-	"stepper.defaults.restart": "$$$$$$$$$ $$$$$$$$$",
-	"restart.button.tooltip": "$$$$$ $$$ $$$$$$$ $$$$$",
-	"next.button.tooltip": "$$$$$$$$$ $$$ $$$$$ $$$$$"
+	"aria.steplabel": "Stap {currentStep} van {totalSteps}",
+	"stepper.defaults.next": "Volgende",
+	"stepper.defaults.restart": "Opnieuw starten",
+	"restart.button.tooltip": "Terug naar eerste stap",
+	"next.button.tooltip": "Ga verder naar de volgende stap"
 };

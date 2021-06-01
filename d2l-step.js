@@ -27,6 +27,10 @@ class D2LStep extends LocalizeMixin(LitElement) {
 				type: Boolean,
 				attribute: 'hide-restart-button'
 			},
+			hideNextButton: {
+				type: Boolean,
+				attribute: 'hide-next-button'
+			},
 			disableNextButton: {
 				type: Boolean,
 				attribute: 'disable-next-button'
@@ -39,7 +43,7 @@ class D2LStep extends LocalizeMixin(LitElement) {
 				type: String,
 				attribute: 'restart-button-aria-label'
 			},
-			ariaTitle:{
+			ariaTitle: {
 				type: String,
 				attribute: 'aria-title'
 			},
@@ -79,6 +83,7 @@ class D2LStep extends LocalizeMixin(LitElement) {
 	constructor() {
 		super();
 		this.hideRestartButton = false;
+		this.hideNextButton = false;
 		this.disableNextButton = false;
 		this.nextButtonAriaLabel = '';
 		this.restartButtonAriaLabel = '';
@@ -93,9 +98,31 @@ class D2LStep extends LocalizeMixin(LitElement) {
 			<div id="aria-title" tabindex="0" class="d2l-offscreen">${this._getAriaTitle()}</div>
 			<slot></slot>
 			<div class="d2l-labs-step-footer">
-				${this.hideRestartButton ? html`<div></div>` : html`<d2l-button title="${ !this.restartButtonTooltip ? this.localize('restart.button.tooltip') : this.restartButtonTooltip }" aria-label="${this.restartButtonAriaLabel}" @click="${this._restartClick}">${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}</d2l-button>`}
+	${this.hideRestartButton
+		? html`<div></div>`
+		: html`
+			<d2l-button
+				title="${!this.restartButtonTooltip ? this.localize('restart.button.tooltip') : this.restartButtonTooltip}"
+				aria-label="${this.restartButtonAriaLabel}"
+				@click="${this._restartClick}"
+			>
+			${!this.restartButtonTitle ? this.localize('stepper.defaults.restart') : this.restartButtonTitle}
+			</d2l-button>`}
 
-				<d2l-button class="d2l-labs-step-button-next" title="${ !this.nextButtonTooltip ? this.localize('next.button.tooltip') : this.nextButtonTooltip }" aria-label="${this.nextButtonAriaLabel}" @click="${this._nextClick}" primary ?disabled="${this.disableNextButton}">${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}</d2l-button>
+	${this.hideNextButton
+		? html`<div></div>`
+		: html`
+			<d2l-button
+				class="d2l-labs-step-button-next"
+				title="${!this.nextButtonTooltip ? this.localize('next.button.tooltip') : this.nextButtonTooltip}"
+				aria-label="${this.nextButtonAriaLabel}"
+				@click="${this._nextClick}"
+				primary
+				?disabled="${this.disableNextButton}"
+			>
+			${!this.nextButtonTitle ? this.localize('stepper.defaults.next') : this.nextButtonTitle}
+			</d2l-button>`}
+
 			</div>
 		`;
 	}

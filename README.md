@@ -30,6 +30,8 @@ npm install @brightspace-ui-labs/wizard
 
 Include the [webcomponents.js](http://webcomponents.org/polyfills/) polyfill loader (for browsers who don't natively support web components), then include necessary components:
 
+![Wizard](./demo/wizard.gif)
+
 ```html
 <head>
   <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
@@ -62,6 +64,24 @@ Add the component to your page
 	});
 </script>
 ```
+
+
+**Properties:**
+
+| Properties | Type | Description |
+|--|--|--|
+| `title` | String | Text displayed in the wizard step |
+| `restart-button-title` | String | Text that is displayed within the button |
+| `restart-button-tooltip` | String | Text that is displayed within the button tooltip |
+| `hide-restart-button` | Boolean | Hide the Restart button |
+| `next-button-title` | String | Text that is displayed within the button |
+| `next-button-tooltip` | String | Text that is displayed within the button tooltip |
+| `disable-next-button` | Boolean | Disable the Next button |
+| `hide-next-button` | Boolean | Hide the Next button |
+
+**Events:**
+- `stepper-next`: dispatched when the Next button is clicked
+- `stepper-restart`: dispatched when the Restart button is clicked
 
 ## Developing, Testing and Contributing
 

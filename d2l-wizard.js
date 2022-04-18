@@ -1,4 +1,4 @@
-import './d2l-single-step-header';
+import './d2l-single-step-header.js';
 import { css, html, LitElement } from 'lit-element/lit-element.js';
 
 class D2LWizard extends LitElement {

@@ -34,7 +34,6 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) polyfill loa
 
 ```html
 <head>
-  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
   <script type="module" src="@brightspace-ui-labs/wizard/d2l-wizard.js"></script>
   <script type="module" src="@brightspace-ui-labs/wizard/d2l-step.js"></script>
 </head>

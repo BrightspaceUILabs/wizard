@@ -35,8 +35,6 @@
   "homepage": "https://github.com/BrightspaceUILabs/wizard#readme",
   "dependencies": {
     "@brightspace-ui/core": "^2",
-    "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2",
-    "@webcomponents/webcomponentsjs": "^2.4.1",
     "lit-element": "^3"
   },
   "devDependencies": {
@@ -48,7 +46,6 @@
     "@brightspace-ui/stylelint-config": "^0.4",
     "@open-wc/testing": "^3",
     "@open-wc/testing-karma": "^4",
-    "@webcomponents/webcomponentsjs": "^2",
     "deepmerge": "^4",
     "es-dev-server": "^2",
     "eslint": "^8",

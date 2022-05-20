@@ -61,7 +61,7 @@
     "karma-sauce-launcher": "^4",
     "lit-analyzer": "^1",
     "stylelint": "^14",
-    "ts-node": "10.2.1",
+    "ts-node": "10.7.0",
     "wct-browser-legacy": "^1"
   }
 }

@@ -52,7 +52,7 @@
     "deepmerge": "^4",
     "es-dev-server": "^2",
     "eslint": "^8",
-    "eslint-config-brightspace": "^0.17",
+    "eslint-config-brightspace": "^0.18",
     "eslint-plugin-html": "^6",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-lit": "^1",

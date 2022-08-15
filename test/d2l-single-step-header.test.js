@@ -29,7 +29,7 @@ describe('d2l-labs-single-step-header', function() {
 
 	describe('constructor', () => {
 		it('should construct', () => {
-			runConstructor('d2l-labs-wizard');
+			runConstructor('d2l-labs-single-step-header');
 		});
 	});
 

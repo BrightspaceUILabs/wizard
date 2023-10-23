@@ -45,7 +45,7 @@
     "@babel/polyfill": "^7",
     "@brightspace-ui/stylelint-config": "^0.8",
     "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
     "@open-wc/testing": "^3",
     "@open-wc/testing-karma": "^4",
     "@web/test-runner": "^0.17.0",

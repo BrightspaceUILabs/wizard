@@ -60,7 +60,7 @@
     "husky": "^8.0.0",
     "lit-analyzer": "^2",
     "stylelint": "^15",
-    "ts-node": "10.2.1",
+    "ts-node": "10.9.2",
     "wct-browser-legacy": "^1"
   }
 }

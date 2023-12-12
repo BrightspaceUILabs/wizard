@@ -1,5 +1,5 @@
 import '@brightspace-ui/core/components/button/button.js';
-import { css, html, LitElement } from 'lit-element/lit-element.js';
+import { css, html, LitElement } from 'lit';
 import { getLocalizeResources } from './localization.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
 import { offscreenStyles } from '@brightspace-ui/core/components/offscreen/offscreen.js';

@@ -1,5 +1,5 @@
 import './d2l-single-step-header.js';
-import { css, html, LitElement } from 'lit-element/lit-element.js';
+import { css, html, LitElement } from 'lit';
 
 class D2LWizard extends LitElement {
 	static get properties() {

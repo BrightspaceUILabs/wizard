@@ -18,7 +18,7 @@ const firstAndLastFixture = html`
 <d2l-labs-single-step-header total-steps="1" current-step="0"></d2l-labs-single-step-header>
 `;
 
-describe('d2l-labs-single-step-header', function() {
+describe('d2l-labs-single-step-header', () => {
 
 	describe('accessibility', () => {
 		it('should pass all axe tests', async() => {

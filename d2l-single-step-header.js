@@ -1,4 +1,4 @@
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, nothing } from 'lit';
 import { bodySmallStyles } from '@brightspace-ui/core/components/typography/styles.js';
 import { getLocalizeResources } from './localization.js';
 import { LocalizeMixin } from '@brightspace-ui/core/mixins/localize-mixin.js';
@@ -139,8 +139,8 @@ class D2LSingleStepHeader extends LocalizeMixin(LitElement) {
 						<hr>
 
 						<div class="d2l-labs-single-step-header-circle" title="${this._getStepLabel()}">
-							${this._isDone() ? html`<d2l-icon class="d2l-labs-single-step-header-done-icon" icon="d2l-tier1:check"></d2l-icon>` : html``}
-							${this._isInProgress() ? html`<div class="d2l-labs-single-step-header-inner-progress-circle"></div>` : html``}
+							${this._isDone() ? html`<d2l-icon class="d2l-labs-single-step-header-done-icon" icon="d2l-tier1:check"></d2l-icon>` : nothing}
+							${this._isInProgress() ? html`<div class="d2l-labs-single-step-header-inner-progress-circle"></div>` : nothing}
 						</div>
 
 						<hr>

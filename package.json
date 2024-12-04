@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:lit",
     "lint:eslint": "eslint",
-    "lint:lit": "lit-analyzer custom-ads-scheduler.js demo test",
+    "lint:lit": "lit-analyzer \"{demo,test}/**/*.js\" --strict",
     "lint:style": "stylelint \"**/*.js\"",
     "start": "es-dev-server --app-index demo/index.html --node-resolve --dedupe --open --watch",
     "test": "npm run lint && npm run test:headless",
